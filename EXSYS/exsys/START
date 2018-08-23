@@ -1,0 +1,20 @@
+
+                         LEARNING HOW TO USE EXSYS
+
+
+The programs on this disk will teach you how to create your own expert
+systems with EXSYS.  If you have not already done so you may wish to
+run the demo expert systems on the RUNTIME disk.  To do this press
+<CTRL><BREAK> to return to DOS, load the RUNTIME disk and enter LEARN.
+The program will allow you to run four demo expert systems.  Each is
+preceded by a short explanation of what the demo is intended to show.
+
+After you finish with the demos, this disk will teach you how an EXSYS
+knowledge base is created. A window will explain each step and the
+program has been slowed down so you can see what is happening.  All you
+have to do is press the space bar when prompted.  You do not have to input
+any of the commands.  Once you have seen a knowledge base created, read
+the manual as it provides information not found in this program.
+
+Running this entire disk takes about 1 hour.
+

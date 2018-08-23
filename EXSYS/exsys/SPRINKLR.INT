@@ -1,0 +1,17 @@
+                      DEMO 5 - PERFORMING CALCULATIONS
+
+The next demo is only 4 rules but it shows how a value can be calculated
+by the expert system and displayed to the user at the end of the run.
+
+The demo selects the type of lawn sprinkler system needed for various
+size lawns.  All you have to do is input the dimensions of the lawn
+to be watered.  The program will determine the type of sprinkler system
+that would be appropriate, calculates the type and amount of hardware
+needed and the total system cost.  These are displayed as numeric values
+at the end of the run.
+
+The example is very simplistic but it shows how values can be calculated
+by the rules.  Backward chaining also applies to numeric values and
+when a value is needed the program first checks to see if it can be
+calculated from other rules before it asks the user for input.
+

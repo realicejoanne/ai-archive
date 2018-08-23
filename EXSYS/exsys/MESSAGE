@@ -1,0 +1,1036 @@
+For this demo we will use a knowledge base file named
+LEARN. The program checks that the knowledge base file
+is on the disk.  If it is not present, the program
+asks you if you want to start a new file.  If you
+answer by pressing <Y> the program will start a new
+knowledge base.
+
+If you press any other key the program will reask for
+the file name.
+|
+When you begin a knowledge base the computer will ask
+you several questions.
+
+The first piece of information that the program will
+ask for is the subject of the knowledge base.  This
+will be displayed when the rules are run.  A SUBJECT
+MUST BE ENTERED or the  program will not let you
+continue on.
+|
+The next piece of information that the computer needs
+about the knowledge base is the author.  The author's
+name will be displayed with the subject when the
+program is run.
+
+Like the subject, the author line MUST be entered.
+
+This is a convenient place for a copyright statement
+if one is needed.
+
+|
+We must now decide what type of calculation system to
+use. The value CAN NOT BE CHANGED LATER.
+
+In this case we want probability, and want to be able
+to eliminate a choice.  The 0,1 system does not have
+probability and the 0-100 system does not allow us to
+completely eliminate a choice.  The 0-10 system has
+the features we need.  (The 0-10 system is the most
+useful of the three systems and is usually the best
+choice) This is one of the few menus in EDITXS that
+does not have a default value. We enter 2.
+|
+The number of rules to use in deriving data has a
+default value of "using all rules".  This is always
+safe, but can lead to unnecessary rules being used in
+some cases.  The value can be changed later, so it is
+almost always best to start by using all rules.
+
+In this case we will use the default value.
+|
+You have the option of having up to a screen full of
+text explaining what your knowledge base does
+displayed when the rules are run.
+
+You will be able to edit, add or delete this text
+later if you need to.
+
+We input text to explain what our knowledge base will
+do.
+|
+You are also given the option of entering up to a
+screen of text to explain the results of running the
+rules.  The text entered will be displayed just before
+the results are displayed.  This text is optional and
+can be changed later. Adding explanatory text is
+highly recommended as it makes using the rules much
+easier for a user.
+
+In this case we want to explain the meaning of the
+results to the user.
+|
+You have control over the default value that decides
+if the user will have the rules displayed when they
+run the knowledge base.  The user can override this
+default value when they run the program if they wish.
+
+Rules run faster if they are not displayed, but if you
+have notes in to the rules that are important for the
+user to read you need to have the rules displayed so
+the user will see the notes.
+
+In it is not necessary that the user see the rules as
+they run.
+|
+We must now input the CHOICES we will select among.
+These are a very important part of the knowledge bases
+since it is among these that the program will decide.
+Almost ALL rules that are not used for data derivation
+SHOULD have one or more choices in them.
+
+In this case we enter the four fruits we will be
+considering.  Additional fruits could be added later
+if we desired. We just press <ENTER> when we have
+entered the last name.
+|
+All new rules are checked against the existing rules
+for consistency, however the rule checker can not tell
+if mathematical expressions are consistent or not so
+they are not considered.  In this case we will leave
+the rule checking function on.
+
+As we will see later this lead to rules that use
+mathematical expressions being displayed when we do
+not want them.
+|
+This menu will be displayed each time before you go to
+the main menu.  You will have the option of editing
+the starting or ending text, subject or author and the
+characteristics that are associated with a variable.
+In this case since we have just input the data we do
+not need to change it.
+
+|
+This is the main menu in EDITXS. From it you can
+select to Add, Edit, Delete, Move, Print, Store/exit
+or Run the rules you have entered. You can also
+request help on the possible command options by
+pressing <H>.
+
+In this case we want to add a new our first rule so we
+press [ENTER].
+|
+The number of the rule appeared in the upper left and
+the menu at the bottom changed to the menu for adding
+conditions.  There are two main types of conditions -
+TEXT and  MATHEMATICAL.  Text conditions are made up
+of a qualifier and 1 or more text values.
+Mathematical conditions are mathematical expressions
+and variables.
+
+In this case we want to have a text condition on
+COLOR.  Since this will be a new qualifier we press
+<N>.
+|
+We must now input the QUALIFIER.  This is usually a
+part of a sentence up through the verb.  We will then
+enter the VALUES which are  the possible completions
+of the sentence.
+
+Since this condition will deal with the color of the
+fruit the qualifier will be THE COLOR OF THE FRUIT IS
+|
+We must now input all of the options we will give the
+user in completing the sentence.  These will be
+presented for us to select the one we want in creating
+the condition.  We can add additional values later but
+it is best to input all that we can think of here.
+
+In this case we will use the colors red, orange, green
+and yellow.
+|
+We now have completed the definition of the new
+qualifier and its value list. We can select the value
+or values that we want for the condition in this rule.
+
+First we want a rule that deals with the color RED so
+we input 1 and the text of the condition will appear
+in the left window.
+|
+We have now created the first condition of the first
+rule.  If we needed more conditions in this rule we
+could continue adding them, but in this case we only
+need the single condition in the IF part, so we press
+<ENTER> to go to the THEN part.  Remember if all of
+the IF conditions are true, the THEN conditions are
+assumed to be true.
+|
+We are now in the THEN part and can add conditions
+like in the if part. However in addition we can now
+add CHOICES, the possible solutions to the  problem
+that the knowledge base will decide among.  Choices
+SHOULD be used in any rule that is not used to derive
+information for other rules.  In this case we are not
+deriving information so we will probably want to use
+choices to indicate what the fact of the color red
+indicates about the probability of the  various
+choices.  To get the list of choices we press <C>.
+|
+The list of choices appears for us to select from.  To
+start off we want to say that the color red is
+strongly indicative of the fruit being an apple.  We
+select APPLE by entering 1
+|
+We must now enter a value from 0 to 10 indicating the
+probability we want to assign to APPLE when the color
+is red.  Since color does not definitively identify
+the fruit as an apple we do not want to give it a
+value of 10, but since it is very strongly suggestive
+we give it a value of 9.  (Remember a value of 10
+locks the value at 10 regardless of other values it
+may receive. Values of 1-9 do not so lock the value.)
+|
+We now want to add the fact that RED can also suggest
+a pear, though not as likely as an apple.  To do this
+we now select PEAR by calling up the list of choices
+again by pressing <C>.
+|
+We can now select PEAR by pressing 2.
+|
+Again we must now give it a value of 0-10.  In this
+case we want the value to be less than the value we
+gave APPLE since red is more suggestive of APPLE than
+it is of PEAR.  Since we gave APPLE a value of 9 we
+will give pear a value of 7.
+|
+We now want to include the fact that if the color if
+RED, the fruits ORANGE and LEMON are eliminated.  To
+do this we again call up the list of choices by
+pressing <C>.
+|
+This time we select LEMON by entering 3.
+|
+To indicate that LEMON is absolutely eliminated if the
+color is red we give it a value of 0.  Remember a
+value of 0 locks the value at 0 regardless of any
+other values the choice may receive.
+|
+We now want to include that RED also eliminates ORANGE.
+
+We call up the list of CHOICES again by pressing <C>.
+|
+This time we select ORANGE by entering 4
+|
+As with LEMON we give ORANGE a value of 0 to eliminate
+it from further consideration.
+|
+We are now finished with the THEN part of this rule so
+we press just <ENTER>
+|
+Each rule can have an optional note.  The note has no
+effect on the running of the program and is intended
+ONLY to point out some piece of information to the
+user.  If rules are not displayed as the rules are
+run, the note will only be seen if the user asks "WHY"
+and has a rule displayed.
+
+In this case we decide to have a note that explains
+the rule.
+|
+Each rule also can have an optional REFERENCE.  Like
+the note this has no effect on the running of the
+program.  The reference differs from the note in that
+the user must specifically ask for it when a rule is
+displayed. The REFERENCE is intended to give a source
+where the user can find more information if they
+question the validity of the rule.
+
+In this case we use the fictitious Encyclopedia of
+Fruit.
+|
+After we complete the reference section of the rule,
+the program displays the new rule for our
+examination.  If we press <ENTER> the rule will be
+checked against all other rules entered.  If the rule
+is incorrect, we can press <N> to drop the rule and
+return to the main menu.  If the rule is almost
+correct, but with a minor error, it is often more
+efficient to accept the rule and then edit it later.
+
+In this case the rule is correct so we press <ENTER>
+|
+We are now back to the main menu screen.  To add the
+second rule we press <ENTER>
+|
+We are now in the IF part of rule 2.  We want a rule
+that covers the color ORANGE, as the previous rule did
+for RED.
+
+Since we can still use the same qualifier, THE COLOR
+OF THE FRUIT IS, and that was the last qualifier
+entered we can press <L> to recall the last qualifier
+entered with its value list.
+|
+We can now select the appropriate color for this rule.
+In this case we want ORANGE so we enter 2.
+|
+That will be the only condition we will need in the IF
+part so we press just <ENTER>.
+|
+We are now in the THEN part and want to state what the
+color ORANGE implies about the probability of the
+various choices.  To get the list of choices press <C>
+|
+We will select APPLE first by entering 1
+|
+Since the color orange eliminates apples, we give it a
+value of 0
+|
+We now want to assign a probability to PEAR, so we
+press <C> to get the list of choices again.
+|
+This time we select PEAR by entering 2
+|
+Since there are no ORANGE pears we assign this a
+probability of 0
+|
+We now want to add LEMON, so we press <C> to get the
+list of choices
+|
+We select LEMON by entering 3
+|
+Since there are no orange lemons, we give it a value
+of 0 to eliminate it from further consideration.
+|
+We now want to add a statement about ORANGES.  We
+recall the list of choices by pressing <C>.
+|
+We select ORANGES by entering 4
+|
+Since the color orange has eliminated all of the other
+fruits in our knowledge base and since the color
+orange is definitive for an ORANGE we assign it a
+value of 10.
+|
+We are now finished with the THEN part so we press
+<ENTER>
+|
+This rule does not seem to need a note so we just
+press <ENTER>.
+
+Remember the note is optional.
+|
+We will give the rule a reference.  In this case it is
+the same as the reference in the previous rule.  To
+recall the reference from the previous rule we enter
+<R>
+|
+We could now edit the reference but in this case it is
+correct so we will just press <ENTER>
+|
+We are shown the new rule to make sure it is correct.
+Since the rule is the way we intended it we press
+<ENTER>
+|
+That is about all we can do with the characteristic
+COLOR. Since all of the fruits in the knowledge base
+can be green or yellow, those colors do not give any
+useful identification information.  Instead we now
+move to the characteristic of skin thickness.
+
+We press <ENTER> to start a new rule
+|
+We are going to use skin thickness to determine if the
+fruit is a citrus fruit or not.  Since we will want
+the user to input a specific value for the thickness
+we will use a mathematical condition rather than a
+text condition.
+
+To indicate that we want to use a MATHEMATICAL
+condition we press <M>.
+|
+We now enter the statement we want to test.  Variables
+can be included and are indicated by a string of
+characters, numbers or spaces enclosed in []. The
+string can be up to 100 characters but only the first
+18 are significant.
+
+In this case we will create a variable [SKIN
+THICKNESS] and see if it is greater that 1 mm.
+|
+The program checks all expressions entered for new
+variables.  When a new variable is found, certain
+information must be provided on it.  (The
+characteristics assigned to  the variable can be
+changed later).
+
+The first information needed is the text to assign to
+the variable.  This is the text that will be used when
+the user is asked for the value of the variable. In
+this case we will assign THE SKIN THICKNESS MEASURED
+IN MM.  This allows us to inform the user of the units
+we want the measurement in.
+|
+We have the option of displaying a variable at the end
+of the run.  This feature is mainly used for variables
+that are calculated by the program during a run. In
+the case of variables entered by the user it is rarely
+useful to have them displayed at the end.
+|
+We can also have a variable initialized to a value by
+the program rather than asked of the user.  This is
+useful for variables that are used as constants or
+that keep a running total. (e.g. A running total cost).
+
+NEVER initialize a variable that you want the user to
+input.
+|
+We finished entering all of the information the
+program needed for the new variable, and the condition
+was displayed in the left window.  Now we will be able
+to use [SKIN THICKNESS] in other expressions and the
+program will recognize it.
+
+In this case we are finished with the IF part so we
+press just <ENTER>
+|
+We are now in the THEN part.  This rule is intended to
+derive information that will be used in other rules so
+we do not use choices in this rule.  Instead we will
+input a condition similar to the ones we used in the
+IF part of the previous rules.  The condition will
+specify if the fruit is a citrus fruit.  We will then
+be able to use the same qualifier in the IF part of
+other rules and this rule will automatically be called
+to determine if the fruit is a citrus.
+
+Since this is a new qualifier we press <N>
+|
+We now input the text of the qualifier that we want to
+use.
+
+In this case it will be THE FRUIT IN QUESTION IS
+
+|
+We now input the two values A CITRUS FRUIT and NOT A
+CITRUS FRUIT. In this case we have included NOT as
+part of the text of the value, this is  the ONLY way
+NOT can be used in the THEN part.
+|
+We select 1 to indicate that if the skin is greater
+than 1mm the fruit is a citrus fruit
+|
+We are now finished with the THEN part of this rule so
+we press just <ENTER>.
+|
+We will add a note
+|
+This rule does not seem to need a reference.
+|
+The rule appears correct so we press <ENTER>
+|
+We will now enter the corresponding rule for fruits
+with skins of 1 mm or less.
+
+To start the new rule we press <ENTER>
+|
+We want to input a mathematical expression so we press
+<M>
+|
+We will now input a formula again using [SKIN
+THICKNESS].  Since we have already provided
+information on the characteristics of that variable,
+the formula will be accepted without any need for
+additional information.
+|
+That is all we need in the IF part so we press <ENTER>
+|
+We now want to recall the qualifier that we used to
+indicate if the fruit was a citrus fruit.  We could
+get it by pressing <L> since it was the last qualifier
+entered, or by entering 2 since it is qualifier number
+2, but lets find it by searching for text in the
+qualifier. REMEMBER ONLY THE QUALIFIER TEXT IS
+SEARCHED, NOT THE VALUES. To find text we press <F>.
+|
+We now input the text we want to search for.  We CAN
+NOT use the word CITRUS since we remember that it only
+occurs in the values, but we can use QUESTION since
+the qualifier we are looking for is THE FRUIT IN
+QUESTION IS.  It is only necessary to use part of the
+qualifier text in a search. If more than one match is
+found you will be given a list of the qualifiers
+found.  If only one match is found, you will be give
+that qualifier with its value list for selection.
+
+We enter QUESTION as the text to search for.
+|
+Since qualifier 2 was the only one with the text
+QUESTION in it, the program displayed the qualifier
+with its value list.
+
+We select 2 to indicate that thin skins indicate the
+fruit is not a citrus fruit
+|
+We are now finished with the THEN part so we press
+<ENTER>
+|
+This rule does not seem to need a note.
+|
+The rule does not seem to need a reference.
+|
+The rule appears correct so just press <ENTER>
+|
+We now want to add some rules that use the information
+we have derived in the last two rules on whether the
+fruit is a citrus fruit.
+
+To start a new rule press <ENTER>
+|
+In this rule we will start with the SAME qualifier on
+CITRUS that we used in the THEN part of the previous
+rules.  IT MUST BE THE SAME QUALIFIER or the program
+will get confused.  DO NOT create a new qualifier if
+you want information to be derived from other rules.
+
+The number of the qualifier that we used previously
+was 2, so we enter 2 to recall that qualifier with its
+value list.
+|
+We select that the fruit is a citrus fruit but
+entering 1
+|
+We are now finished with the IF part and can go to the
+THEN part.
+|
+We now want to add the information that if the fruit
+is a citrus fruit, it is NOT an apple or pear.  To do
+this we first select the list of fruits by pressing
+<C>.
+|
+We select apple by entering 1
+|
+To eliminate this choice we give it a value of 0
+|
+We also want to eliminate pear so we again ask for the
+list of choices by pressing <C>
+|
+This time we select pear by entering 2
+|
+We also give it a value of 0 to eliminate it.
+|
+That is all we can say in the THEN part since CITRUS
+does not help to distinguish between lemon and orange
+which are both citrus fruits.
+
+We press <ENTER> to leave the THEN part
+|
+This rule does not seem to need a note
+|
+We will include a reference
+|
+The rule appears correct so we press <ENTER>
+|
+We now want to add the corresponding rule to the one
+we just entered by with the fruit not being a citrus
+fruit.
+|
+We recall the qualifier on CITRUS by entering 2
+|
+This time we select NOT A CITRUS by entering 2
+|
+We can now go to the THEN part.
+|
+This time we want to eliminate lemon and orange.
+
+We select the list of choices by pressing <C>.
+|
+We select lemon by entering 3.
+|
+We give it a value of 0.
+|
+We now want to eliminate orange so we again press <C>
+to get the list of choices
+|
+We select orange by entering 4
+|
+We give it a value of 0
+|
+That is all we can do in the THEN part so we just
+press <ENTER>
+|
+This does not seem to need a note
+|
+We will repeat the reference from the previous rule by
+entering <R>
+|
+We will change the page number and then press enter.
+|
+The rule appears correct so press <ENTER>
+|
+We now want to add a rule that will separate between
+apples and pears. To do this we will use the presence
+of individual seeds greater than 2mm.
+
+To start the new rule we press <ENTER>.
+|
+We will start with the condition that the fruit is not
+a citrus fruit.  This was exactly the same condition
+that was used as the first condition in the preceding
+rule.  We can repeat the condition, with its values,
+by pressing <R>.
+|
+We will now add a second condition on the presence of
+individual seeds greater than 2mm.
+
+To start a new qualifier we press <N>.
+|
+We now input the text of the qualifier.
+|
+The two values we will give it are PRESENT and NOT
+PRESENT.
+|
+We select the case where the seeds are present by
+entering 1
+|
+That is all we need in the IF part so we press just
+<ENTER>.
+|
+We are now in the THEN part and want to comment on
+what the IF conditions imply about the probability
+values for apples and pears.  We will start with
+apples by selecting the list of choices.
+|
+We select apple by entering 1
+|
+We assign the apple a probability of 9 since the
+presence of seeds suggests an apple.
+|
+We now want to eliminate pear.  First we select the
+list of choices by pressing <C>.
+|
+We select pear by entering 2.
+|
+To eliminate the choice we give it a value of 0.
+|
+That is all we need in the THEN part so we press just
+enter.
+|
+The rule does not seem to need a note.
+|
+We will give it a reference.
+|
+The rule looks correct so we press enter.
+|
+The program has displayed another rule. This was
+done by the rule checking function.  If the rule
+we have just entered were true, the displayed rule
+would also be true. (The first condition of the new
+rule is the same as the only condition in the
+displayed rule). When the program finds a
+rule that would also be true, it warns the user so
+they can check that there is no conflict.  In this
+case the two rules do not conflict, so we press
+<ENTER>
+|
+We will now add the corresponding rule for when seeds
+are not present.
+|
+We can repeat the first condition from the previous
+rule by pressing <R>.
+|
+We can now recall the last qualifier entered by
+pressing <L>.
+|
+We select 2 to form a condition saying the seeds are
+not present.
+|
+That is all we need in the IF part so we press just
+<ENTER>.
+|
+In the THEN part we want to eliminate apple so we
+press <C> for the list of choices.
+|
+We select apple by entering 1
+|
+We give it a value of 0
+|
+We select pears by entering <C>.
+|
+We select pears by entering 2.
+|
+We give it a value of 9.
+|
+That is all we need in the THEN part.
+|
+The rule does not seem to need a note.
+|
+We will repeat the reference from the previous rule by
+entering <R>.
+|
+We will use the reference without any change so we
+press <ENTER>.
+|
+The rule is correct so we press <ENTER>.
+|
+As with the previous rule the program found another
+rule that would also be true if the new rule were
+true.  Again there is no conflict between the rules
+so we press <ENTER>.
+|
+We now want a rule that will separate between lemons
+and oranges. To start the rule we press <ENTER>.
+|
+We recall qualifier number 2 by entering 2.
+|
+This time we select to have the fruit a citrus fruit
+by entering 1
+|
+To decide between the lemons and the oranges we will
+use the length. If the length is less than 6 cm it is
+probably a lemon and if over 6 cm it is probably an
+orange.
+
+We press <M> to indicate that we will be creating a
+mathematical condition.
+|
+We will use a variable [LENGTH] and test to see if it
+is under or over 6 cm.
+|
+Since [LENGTH] is a new variable, we must input
+information on it. The first information needed is a
+text statement that explains what the variable means.
+|
+There is no reason to display this variable at the end
+of a run so we press <ENTER> and use the default value
+of NO.
+|
+Since we want the user to input this value, we do not
+want it initialized so we press <ENTER> and use the
+default value of NO.
+|
+That is all we need in the IF part so we go to the
+THEN part.
+|
+Here we want to assign probability to lemon and orange.
+
+We select the list of choices by pressing <C>.
+|
+We select lemon by entering 3.
+|
+Since the small size is indicative of a lemon, but
+certainly not definitive, we give it a value of 8.
+|
+We now want to assign a probability to orange.
+|
+Select orange by entering 4.
+|
+Since we could be dealing with a small orange, we do
+not want to eliminate the choice, only give it a low
+value to reduce its probability with respect to the
+other choices.  We give it a value of 2.
+|
+That is all we need in the THEN part so we press
+<ENTER>.
+|
+The rule does not need a note.
+|
+We will give it a reference.
+|
+The rule is correct
+|
+Again the rule checker found another rule that
+would be true if the new rule were true.
+
+The rule found does not conflict with the new
+rule so we press <ENTER>
+|
+We now will add the corresponding rule for fruit
+greater than 6 cm.
+|
+We repeat the first condition by pressing <R>.
+|
+We will now need a mathematical expression, so we
+press <M>.
+|
+We input a formula using the same variable [LENGTH].
+Since the program has used this variable before, we
+will not be asked for data on the variable.
+|
+That is all we need in the IF part.
+|
+In the THEN part we want to assign probabilities to
+orange and lemon. Press <C> to get the list of choices.
+|
+We select lemon by entering 3.
+|
+We assign it a value of 2 since it would be unlikely
+to get a lemon that big.
+|
+We now redisplay the list of choices.
+|
+We select orange by entering 4.
+|
+Since the large size is indicative of an orange we
+give it a value of 8
+|
+That is all we need in the THEN part so we press just
+<ENTER>.
+|
+This rule does not need a note.
+|
+We repeat the reference from the previous rule and
+change the page number.
+|
+We use the editing keys to change the page number .
+|
+The rule is correct.
+|
+Again the rule check found a rule that would be
+true if the new rule were true.  Since there is
+no conflict we press <ENTER>.
+|
+The program has found another rule that might be
+true if the new rule were true. In this case we
+can see that the two rules could not both be true.
+The rule checker ignores mathematical conditions and
+only checks the text conditions.  If it finds a possible
+conflict with the existing rules it warns the user.
+In this case the conflict does not really exist
+because the mathematical conditions prevent it, so we
+press <ENTER>.  If there was a conflict we could edit
+either the old or new rule to avoid it. The rule
+checking function can be switched off if many
+mathematical conditions are used.
+|
+We will now add a rule that checks that the values
+input are not excessively large. To do this we will
+check that [LENGTH] is less than 18 cm.
+|
+The first condition will be a mathematical condition
+so we press <M>.
+|
+We enter a formula for [LENGTH] greater than 18 cm
+|
+In this case we made a typographical error and
+misspelled the variable name.  The program will prompt
+for the required information on the variable which the
+program considers to be a new one.  We do not want to
+have a new variable so we press just <ENTER> to cancel
+the condition.
+|
+We are now back to the main menu and we can try again.
+|
+We will now input the correct formula.
+|
+That is all we need in the IF part.
+|
+We want a large value like this to trigger the display
+of a note at the end of the run, regardless of whether
+rules are displayed or not, warning of possible
+measurement error or that the fruit may not be one of
+the ones the program is designed for.
+
+To do this we will use a mathematical variable in the
+THEN part. We press <M>.
+|
+In the THEN part math expressions assign a value to a
+variable.  We are first asked for the variable name.
+Usually there is a value associated with the variable
+but in this case we will just have the text associated
+with the variable displayed.  This is the only time
+that the text associated with the variable need not
+describe the variable. We will use a variable named
+[LARGE LENGTH]
+|
+The program recognized it as a new variable.  We will
+put a warning message as its text and flag it for
+display at the end of the run.
+|
+Since we want to use this as a warning message to the
+user, we do want it displayed at the end of a run.  We
+press <Y>.
+|
+Most variables have a value associated with them,
+however some, like this one, do not need a value since
+they are actually only a text message to the user.  We
+select to not have a value associated with the
+variable.  This will cause the text associated with
+the variable to be displayed in the left window.
+
+|
+For comparison we will now add a standard mathematical
+variable in the THEN part. We will start by pressing
+<M>.
+
+This condition is being added as a demonstration only
+and will be deleted shortly.
+|
+For this example we will use a variable named [X].
+|
+The program recognized [X] as a new variable and is
+requesting the standard information on the variable.
+The text we associate with it will describe it as half
+the length.
+|
+We will have this variable flagged for display at the
+end of the run.
+|
+Unlike the previous variable we will have a value
+associated with this variable.
+|
+Since [X] will be based on a calculation using other
+variables, we do not need to initialize it.
+|
+Since we stated that [X] has a value associated with
+it, the program has now asked for a mathematical
+expression. This expression will be evaluated and the
+result assigned to [X] if the rule is used.
+|
+The assignment of value appeared in the left window.
+If this rule were found to have a true IF part, the
+value of [X] would be calculated and displayed at the
+end of the run.
+|
+This does not need a note.
+|
+Likewise this does not seem to need a reference.
+|
+The rule is in error in that the second condition in
+the THEN part was added only as an example.  However
+we will accept the rule and then edit it to remove
+that condition.
+|
+We will now press <E> to go to the edit existing rule
+mode.
+|
+We could enter the number of a rule, but since we know
+that the rule was the last one entered (a frequent
+case for the edit mode) we can just press <ENTER> to
+edit the last rule.
+|
+We must select the part of the rule we want to edit.
+We can also scroll through the rules until we find the
+one we want.  To show this we will press the <UP
+ARROW> key and we will go from rule 11 to rule 10.
+|
+We will now go back to rule 11 by pressing the <DOWN
+ARROW> key.
+|
+What we really want to edit is the THEN part of this
+rule so we press <T>.
+|
+We have several options when editing the IF or THEN
+parts of a rule. In this case we want to delete a
+condition so we press <D>.
+|
+The number of the condition we want to delete is
+number 2.  We enter 2.
+|
+That condition has now been deleted.  We could also
+add a condition by pressing <A> and we would be at the
+menu we used when adding conditions in a new rule. We
+could also change a condition, which would delete the
+current condition but use the same qualifier.  To see
+some of these lets finish with this rule by pressing
+just <ENTER>.
+|
+We will now go back to rule 10 by pressing the <UP
+ARROW> key.
+|
+We will choose to edit the IF part by entering <I>.
+|
+We will reorder the conditions in the rule.
+
+Conditions are checked in the order that they occur in
+the rule.  General conditions should be first.  It is
+sometime necessary to reorder conditions.  To do so
+press <R>.
+|
+The program is asking for the condition we want to
+move.  In this case we will move condition 2 to be the
+new condition 1.  We enter 2.
+|
+We want to move it to line 1, so we enter 1.
+|
+We have now reversed the order of the conditions.  We
+will now select to change condition 2.  Change will
+cause the display of the same qualifier that was used
+in the condition in the right window.  To change a
+condition press <C>.
+|
+In this case we want to change condition 2.
+|
+For this example we will enter the value NOT A CITRUS
+by entering 2.
+|
+The condition was changed.  We will now change it back
+by pressing <C>.
+
+|
+We will select condition 2 again.
+|
+This time we will give it its original value by
+entering 1.
+|
+The condition is now back to its original form.  We
+will now return condition 2 to being the first
+condition. To do this we press <R> for reorder.
+|
+We move condition 2.
+|
+We will again make it the first condition.
+|
+We are now finished with the editing demo so we press
+<ENTER>.
+|
+We now press <ENTER> to return to the main menu.
+|
+To delete a rule we press <D> from this main menu.
+|
+As an example we will select rule 3 for deletion.
+|
+The program displays the rule and asks us to make sure
+it is really the one we want to delete.  We also can
+scroll through the rules with the arrow keys as we did
+in the edit mode.  IF we press <Y> the rule will be
+deleted and all other rules will be renumbered
+accordingly.  In this case we do not really want to
+delete the rule so we will press <N>.
+|
+We can also move a block of rules form the main menu.
+As an example we will move the last rule to be the
+first rule.  To go into the move rules mode press <M>.
+|
+We could input the number of a rule to start the block
+or we can input <L> for the last rule, even if we do
+not remember its number.  In this case we want the
+last rule so we enter <L>.
+|
+We can move a block of rules or a single rule.  In
+this case we will only move a single rule, so the
+start and end of the block are both the last rule.
+Again we can enter <L> for the last rule.
+|
+We will move the last rule to be the new first rule by
+moving it to before rule 1. We enter 1.
+|
+The rule is now moved.  We can also store, print or
+run the rules we have entered.  Running rules from
+EDITXS is the same as using the runtime program
+except, you return to the edit mode when you are
+finished or press <ESC> in response to a question.
+
+THIS DEMO CAN NOT ACTUALLY STORE THE RULES
+but when using the actual program you MUST store
+the rules with the <S> command when you are finished.
+Failure to do so will cause any rules entered since
+the last store to be lost. We will now press <S> to
+exit this demo.
+|
+After you have stored the rules you can exit the
+program by pressing <ENTER> or you can return to the
+program by pressing <N>. In this case we will press
+<Y>.
+|
+

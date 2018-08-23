@@ -1,0 +1,101 @@
+WELCOME TO EDITXS
+
+This program will instruct you in how to use the rule editor, EDITXS.
+
+If you have not already done so you should run some of the demo
+knowledge bases on this disk to see how the expert systems created
+with EXSYS interact with the user.
+
+When running this lesson all you will have to do is press the space
+bar.  The program will get all of its command input from the disk.
+The program will display a screen and pause for you to read the
+screen. A window will then appear in the middle of the screen
+containing an explanation of what action should be taken and why.
+After you have read this window, press the space bar.  YOU DO NOT NEED
+TO INPUT COMMANDS.  The window will disappear and you will have a
+large blinking cursor.  After a few moments the input that you would
+type in if you were developing the knowledge base will appear.  The
+program will pause for a few moments to give you time to read the
+input.  The program will continue through the rules and will
+demonstrate how to edit rules and run the rules entered.
+
+SINCE THIS PROGRAM IS INTENDED TO EDUCATE THE USER AND IS NOT INTENDED
+TO BE USED IN PLACE OF EDITXS, IT IS DESIGNED TO NOT BE ABLE TO STORE
+THE RULES IT DEVELOPS.  NEVER USE THIS PROGRAM FOR DEVELOPMENT OF
+KNOWLEDGE BASES THAT YOU WANT TO KEEP. USE THE PROGRAM EDITXS.EXE FOR
+ACTUAL KNOWLEDGE BASES DEVELOPMENT.
+
+This program will take you through the development of a very simple
+set of rules that can identify several fruits.  While this is a very
+simplistic example, the techniques we will use are the same as would
+be used for large and complicated knowledge bases.
+
+Several term will be used in the discussion that follows, knowledge
+base, condition, choice and rule.
+
+KNOWLEDGE BASE:  Expert systems deal with knowledge rather than data
+and the collection of rules that tells the program how to solve a
+problem is called a knowledge base.
+
+CONDITION:  In EXSYS a condition is any statement that can be tested
+for validity.  Conditions can be text statements like "THE BALL IS
+RED". If the user inputs the color of the ball as BLUE, the condition
+is false.  If the user inputs the color as RED the condition is true.
+Conditions can also be mathematical expressions with variables such as
+[DIAMETER OF BALL] < 5.  If the user input a diameter value of less
+than 5 the condition is true.  If the user inputs a value greater than
+5, the condition is false.  Text conditions can also have multiple
+values (e.g. THE BALL IS RED OR BLUE) or they can use NOT (e.g. THE
+BALL IS NOT BLUE).  Conditions are the basic element we will use in
+EXSYS to explain how to solve a problem.
+
+CHOICE:  We must be able to define the possible solutions to a problem
+that we are using EXSYS for. EXSYS will use the rules we define to
+determine which of the solutions is the most likely.  These possible
+solutions are called choices in EXSYS. Choices are found only in the
+THEN part of rules and have a probability associated with them.  EXSYS
+combines the various probability values from all of the rules that are
+determined to be valid to arrive at the final probability value for a
+choice.
+
+RULE:  A rule is a collection of IF conditions followed by a
+collection of THEN conditions.  EXSYS tests the IF conditions to see
+if they are ALL true.  If they are, the THEN conditions are added to
+what the computer knows and the probability values for the choices in
+the THEN part are stored.  When a condition in the IF part of a rule
+is being tested, the program attempts to derive the information needed
+from other rules. This is called backward chaining and allows complex
+problems to be broken down into smaller simpler ones.  Backward
+chaining is a very powerful feature of EXSYS.
+
+
+The most difficult part of starting any knowledge bases is to decide
+what approach to use in structuring the rule to explain the problem to
+the computer.  For large problems it is best to break the problem into
+smaller sub-problems that are easier to define.  The computer will use
+backward chaining to combine the results of the sub-problems to solve
+the overall problem.  In the example we will be using here,
+identifying a few fruits, we only need to decide on a few
+characteristics that we can use to identify the particular types, and
+what level of certainty we want to assign to the individual
+characteristics reliability in distinguishing between the fruits.  To
+keep the problem simple we will only consider the fruits apple, pear,
+lemon and orange.  The characteristics we will use will be color, skin
+thickness, presence of large seeds and length.  Additional
+characteristics could be added later if we desired. We will use the
+approach of characteristics eliminating certain fruits from further
+consideration along with certain characteristics implying an
+identification.  We will consider each characteristic separately, and
+only describe what that characteristic implies about the
+identification.  The program will combine all of the rules to identify
+the fruit using the minimum number of questions.
+
+
+While this lesson will cover most features of EDITXS you should still
+read the manual as it provides greater detail on some aspects of the
+program and gives other examples.
+
+
+PRESS THE SPACE BAR AND WE WILL START:
+
+

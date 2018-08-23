@@ -1,0 +1,25 @@
+              DEMO 2 - COMBINATION OF PROBABILITY FACTORS
+
+The next demo shows how EXSYS can combine the probabilities from a group
+of rules to arrive at a final combined probability.  The expert system
+identifies birds ("peep" sandpipers) to species and plumage.  The various
+physical characteristics of the bird being described are indicative,
+with varying degrees of certainty, of a particular species or plumage.
+The program will combine the various probabilities associated with
+each species to arrive at an ordered list of the most likely to least
+likely species and plumage.
+
+It is possible to answer the program's questions in such a way that it
+will eliminate ALL possible species with no bird matching the
+description.  If this happens you will not get any species in the final
+list.  You can display all of the species by pressing <A>.  They will
+all have values of 0/10 indicating that they were eliminated.  If you then
+enter the number of one of the choices it will show you what rules
+eliminated it.  The first time through, answer each question with 2.
+You may then want to rerun the program or press <C> to be given
+the option of changing 1 or more of your answers and rerunning the
+program with the rest of the answers held constant.  When you press <C>
+you will be given a numbered list of all the data you told the computer.
+Enter the number of the statement you wish to change and press <ENTER>.
+After you have made the list the way you wish press <R> to rerun the data.
+

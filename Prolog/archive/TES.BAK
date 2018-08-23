@@ -1,0 +1,49 @@
+domains
+	dnama = symbol
+	
+predicates
+	laki(dnama)
+	perempuan(dnama)
+	ayah(dnama,dnama)
+	ibu(dnama,dnama)
+	saudara(dnama,dnama)
+	paman(dnama,dnama)
+	bibi(dnama,dnama)
+	anaklaki(dnama,dnama)
+	anakcewe(dnama,dnama)
+	kakek(dnama,dnama)
+	nenek(dnama,dnama)
+	
+clauses
+	laki(budi).
+	laki(andi).
+	laki(danu).
+	laki(ito).
+	
+	perempuan(ani).
+	perempuan(nani).
+	perempuan(mira).
+	perempuan(cici).
+	
+	ayah(budi,mira).
+	ayah(budi,danu).
+	ayah(budi,andi).
+	ayah(andi,ito).
+	ayah(andi,cici).
+	
+	ibu(ani,mira).
+	ibu(ani,danu).
+	ibu(ani,andi).
+	ibu(nani,ito).
+	ibu(nani,cici).
+	
+	saudara(mira,danu).
+	saudara(mira,andi).
+	saudara(danu,mira).
+	saudara(danu,andi).
+	saudara(andi,mira).
+	saudara(andi,danu).
+	saudara(ito,cici).
+	saudara(cici,ito).
+	
+		

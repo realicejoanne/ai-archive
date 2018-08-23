@@ -1,0 +1,22 @@
+           DEMO 4 - DERIVATION OF INFORMATION FROM OTHER RULES
+
+The next demo is a very simplistic one that could be easily done on
+a piece of paper, however it shows how the EXSYS programs can derive
+needed information from other rules.  This expert system tells the user
+what to set the thermostat at depending on the time of year and
+time of day.
+
+When the program displays a rule you will notice it has conditions in it
+like "THE SEASON IS ..." or "IT IS DURING BUSINESS HOURS".  These were not
+specifically asked of you but were derived from other rules.  To see
+what rules were used to derive the information enter the number of the
+IF condition you are curious about.  The program will display the rule used
+to derive that data.  You can then ask about that rule's conditions, etc.
+When you are through examining the rules just press <ENTER> to go back up
+the chain of rules to where you were.
+
+The use of derivation in the example is a trivial one, but the ability to
+break large problems into small ones and then have the computer merge the
+solutions of the small ones to solve the large one is VERY powerful and
+makes for complex but easily modified expert systems.
+

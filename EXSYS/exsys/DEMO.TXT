@@ -1,0 +1,142 @@
+EXSYS  is a group of programs that allows you to generate expert systems to
+solve  a  wide  range of problems. An expert system is a type of artificial
+intelligence  program  in  which the  computer  is  taught,  using  English
+sentences  and algebraic  expressions, how  to solve  a problem.  Once  the
+computer has been taught to solve the problem, a user can interact with the
+computer  as  if  it were a human expert in the subject area.  The computer
+asks  the user  questions, arrives  at a  logical conclusion  based on  the
+user's  response and can explain, in easily readable English, its rationale
+for  the conclusion it reaches. The program can also explain why it needs a
+particular piece of information.
+
+Once  an expert system is  created all the user  has to do is  select items
+from  multiple choice lists. EXSYS  brings the capability to  generate your
+own  expert systems  to the  IBM PC.  EXSYS is  a low  cost  expert  system
+development tool for the IBM PC with features and  capabilities  comparable
+to programs costing much, much more.
+
+An expert system can be created with EXSYS for any problem if:
+
+     1.  The problem involves a selection from among a definable group
+     of  choices. The  number of  choices can  be very  large, as  the
+     program can use the full memory of the IBM PC.   Options  ranging
+     from  simple yes/no or buy/sell decisions to selecting from among
+     over 1000 possible solutions can be handled.
+
+     2. The decisions which lead to resolution of the problem  can  be
+     stated  in  terms  of  logical  rules.   The  rules  can  involve
+     probability,  e.g. "If X and  Y then there is an 80% chance  that
+     choice 1 is appropriate". The program can derive information from
+     other  rules, so large problems  can be broken down  into smaller
+     ones. Once the smaller, and generally easier, problems are solved
+     the  program combines the solutions to solve the overall problem.
+     The statement of the logical rules can involve text statements or
+     mathematical  expressions. Numeric variables  can be included  in
+     the rules and calculated by the program.
+
+The  scope of possible applications  is endless. Any area  where one person
+has  special knowledge or expertise  that is needed by  others is a  likely
+candidate.  Anything  from  identification  of  biological  specimens,   to
+automating  complex regulations, to aiding buyers in selecting from among a
+group  of  products, to  automated user assistance  is possible. An  expert
+system  makes one person's expertise available to many others or allows the
+knowledge of a group of experts to be collected in a usable form. To run an
+existing  expert system  takes essentially  no training  and involves  only
+selection of items from multiple choice lists.
+
+With  the  EXSYS  Expert System  Development  Package  you will  be able to
+generate  expert systems without  any knowledge of  programming or  complex
+computer languages. ALL input is straight forward English  text,  algebraic
+expression  or selection of an  item from a list.  The rules that tell  the
+computer  how to solve the problem are collections of sentences, similar to
+the way you would explain to a person how to solve the problem. All command
+options available are always displayed on the screen and help  screens  are
+always available for more detailed information.
+
+EXSYS  allows  probabilities  to  be  assigned  to  the  various   possible
+solutions. Many rules can contribute to the final probability of  a  single
+solution.  This  allows  a wide range of factors to be considered and makes
+for a much more realistic expert system.
+
+If  you do have  problems running EXSYS,  there is also  an  expert  system
+included  to  help  determine the cause of your difficulty and how to avoid
+it.
+
+You  can  even  sell the expert systems you develop. The runtime portion of
+the  development  package  can  be  distributed  with  your  expert  system
+knowledge base without royalty if you are a registered EXSYS user.
+
+
+
+                            FEATURES OF EXSYS
+
+1.   The knowledge and  expertise of individuals  can be "captured"  in the
+expert system knowledge base.
+
+2.  Users of expert systems are educated while they are getting the correct
+answers to real life problems.
+
+3.  EXSYS can fully explain how it arrived at its conclusions.  You can ask
+the computer why it wants a particular piece  of  information  it is asking
+you for and the computer will explain its need for the information  and how
+it will be used in arriving at a conclusion.
+
+4.  Once  the  program has reached its conclusion, you can easily try "what
+if"  experiments by changing one, or a few, of the answers to the questions
+the  computer asked while  holding the rest  of the answers  constant. This
+allows  you  to  perform a  sensitivity  analysis  to see  how  critical  a
+particular  answer was in  arriving at the  final conclusion. You  can also
+develop  an  expert  system model  and use  the "what  if" feature  to test
+possibilities. Values can be saved from a previous run for comparison.
+
+5. When an expert system needs data it will try to derive  the  information
+from  other rules (backward  chaining).  This allows  large problems to  be
+broken down into smaller more easily solved ones.  The program combines the
+solutions to the smaller problems to solve the large problem.
+
+6. Expert systems can be developed without special programming knowledge or
+need for special computer languages. All input is English  text,  algebraic
+expression or selection from a list displayed on the screen.
+
+7.  The  EXSYS  package is written in C and uses memory very efficiently so
+knowledge bases with large numbers of rules can be developed.  The  program
+can  use the full available memory in the PC and can handle about 700 rules
+per 64k of memory over 192k, that is almost 5000 rules in a PC with 640k of
+memory.
+
+8.  The  selection among  the possible solutions  to a problem  can involve
+probability  in  several ways.   The expert system  will keep track  of the
+probabilities of the various choices and provide a sorted list of solutions
+from the most likely to least likely.
+
+9. Rules can be easily added, deleted or changed with the rule  editor  and
+you can run the rules you have entered without leaving the rule editor.
+
+10.  All new rules entered into the expert system are automatically checked
+against all existing rules for consistency.
+
+11.  Numeric variables can be used in algebraic expressions. Trigonometric,
+exponential  and log functions  are supported. Numeric  values also can  be
+calculated  by  the  expert system  and  displayed  to the  user  with  the
+program's final conclusions.
+
+12. Color is supported or can be switched off.
+
+13.  All registered users of EXSYS get program updates for only $20.
+
+14.  Help  screens  are  available  from  all  menus  to  provide  detailed
+information on command options.
+
+15. All EXSYS programs are not copy protected making them easier to use and
+more reliable.
+
+
+
+                           SYSTEM REQUIREMENTS
+
+                           IBM PC, AT or true compatible
+                           256k or more
+                           1 single sided disk drive
+                           DOS 2.0  or higher
+
+

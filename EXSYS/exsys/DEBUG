@@ -1,0 +1,43 @@
+>>>myStrDup(mike.c 1433)=544669696
+>>>myFree(544669696 mike.c 1461)
+String freed=C:\EXSYS\
+	----------------------START HOT_SPOT LIST------------------------
+	Hot Spot = 649003058
+	 rct: left=0 top=0 bottom=32767 right=32767
+	 model=0
+	 foo=0 other
+	 right=649003058 left=649003058
+	Hot Spot = 649003058
+	 rct: left=0 top=0 bottom=32767 right=32767
+	 model=0
+	 foo=0 other
+	 right=649003058 left=649003058
+	----------------------END HOT_SPOT LIST------------------------
+---------- CLOSED ----------
+	**********************START MODEL LIST************************
+	MODEL INFO STARTS: model=649527404
+	magic_num=16001
+	tag=nil_tag
+	right=649527404 left=649527404
+	is_visible=1 is_man=0 is_control=0 is_pseudo_control=0
+	f1=0 f2=0 f3=0 f4=0 f5=0 f6=0 f7=0 f8=0 f9=0 f10=0 f11=0 f12=0
+	f13=0 f14=0 f15=0 f16=0 f17=0 f18=0 f19=0 f20=0 f21=0
+	pt_from=(0,0) pt_to=(0,0)
+	value=-12345
+	scroll_start_val=0 scroll_end_val=-32768
+	rct: left=0 top=0 bottom=0 right=0
+	win=0=0
+	MODEL INFO STARTS: model=649527404
+	magic_num=16001
+	tag=nil_tag
+	right=649527404 left=649527404
+	is_visible=1 is_man=0 is_control=0 is_pseudo_control=0
+	f1=0 f2=0 f3=0 f4=0 f5=0 f6=0 f7=0 f8=0 f9=0 f10=0 f11=0 f12=0
+	f13=0 f14=0 f15=0 f16=0 f17=0 f18=0 f19=0 f20=0 f21=0
+	pt_from=(0,0) pt_to=(0,0)
+	value=-12345
+	scroll_start_val=0 scroll_end_val=-32768
+	rct: left=0 top=0 bottom=0 right=0
+	win=0=0
+	**********************END MODEL LIST************************
+---------- CLOSED ----------

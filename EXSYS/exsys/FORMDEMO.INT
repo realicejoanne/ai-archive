@@ -1,0 +1,18 @@
+                      DEMO 3 - SELECTING FORMS
+
+The next demo is an application of a very simplistic 11 rule expert system
+that does not use probability.  (Remember that EXSYS programs can have
+thousands of rules).
+
+The program helps select the forms a person needs to fill out for a
+variety of personnel actions in an imaginary company.  This type of
+expert system can be very useful to free professionals from having to
+answer very simple repetitive questions and allow them to make more
+productive use of their time.
+
+The program will list the forms a person needs to fill out based on the
+answers to a few questions.  It also provides useful notes to aid the user
+and can if requested, by pressing <R>, show the reference for the
+requirement to fill out that form from the company's procedure manual.
+
+

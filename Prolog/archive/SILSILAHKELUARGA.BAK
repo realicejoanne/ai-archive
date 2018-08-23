@@ -1,0 +1,13 @@
+Domains
+	orang = symbol
+	
+Predicates
+	lelaki(orang).
+	perempuan(orang).
+	ayah(orang,orang).
+	ibu(orang,orang).
+	saudara(orang,orang).
+	pasangan(orang,orang).
+	
+Clauses
+										

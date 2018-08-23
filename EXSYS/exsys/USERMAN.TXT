@@ -1,0 +1,2621 @@
+                                   EXSYS
+
+                     Expert System Development Package
+
+                               USER'S MANUAL
+
+
+                                Version 2.1
+
+
+
+                (c) Copyright Dustin Huntington 1983,84,85
+
+
+                                EXSYS, Inc.
+                              P.O. Box 75158
+                              Contr. Sta. 14
+                          Albuqueruqe, NM  87194
+                              (505) 836-6676
+
+                        MINIMUM SYSTEM REQUIREMENTS
+
+
+               IBM PC, AT or compatible
+               256k RAM *
+               One single sided disk drive **
+               DOS 2.0 or higher
+
+*   The full available memory can be used. EXSYS can create about 700 rules
+per 64k  of memory over 192k. Expert systems can be run in less memory than
+is required for their development. Many expert systems will run in 192k.
+
+** A second disk drive is very useful. The programs can be used with a hard
+disk.
+
+
+                      MAKING COPIES OF THIS SOFTWARE
+
+The EXSYS software is not "copy protected". Copy protection makes a program
+more difficult  and unreliable to use and adds to the cost of the software.
+The intention  throughout the development of EXSYS has been to make it easy
+and user friendly and to bring you a quality, supported software package at
+the lowest  practical cost.  We feel  that copy  protection is  contrary to
+these goals  and are  relying on  the integrity  of the  purchasers not  to
+illegally distribute copies of the program.
+
+There is  one exception  to this  policy. Any registered owner of the EXSYS
+Development Package is granted permission to distribute exact copies of the
+files  EXSYS.EXE,  INST.TXT  and  the  associated  .HLP  files  with  their
+developed expert  system knowledge bases without royalty. This applies ONLY
+to these  files and  NOT the  expert system development files EDITXS.EXE or
+SHRINK.EXE. The  distributed copies of the file EXSYS.EXE must be identical
+to the  one on  the disks  supplied with  this  manual,  without  addition,
+deletion or  change and  applies only to copies on floppy disk. Appropriate
+credit must  be given  to EXSYS,  Inc. on  the disk  label,  along  with  a
+statement that  some of  the programs on the disk are copyrighted by Dustin
+Huntington.
+
+
+                               INTRODUCTION
+
+EXSYS is  a generalized  expert system  development package. Expert systems
+are a  type of artificial intelligence program that emulate the interaction
+a user  might have  with a  human expert  on a subject area. Expert systems
+developed with EXSYS will ask the user questions relevant to a subject. The
+user answers  by selecting  one or  more answers  from a list or entering a
+numeric value.  The computer  will continue  to ask  questions until it has
+reached a  conclusion. The  conclusion may  be the  selection of  a  single
+solution or  a list  of possible solutions arranged in order of likelihood.
+The computer  can explain, in English, how it arrived at its conclusion and
+why.
+
+Expert systems  can be developed with EXSYS for any problem that involves a
+selection from  among a  definable group  of choices  where the decision is
+based on  logical rules.  The rules can involve relative probabilities of a
+choice being  correct. Any area where there is a person or group of persons
+that have  special expertise needed by others is a possible area for EXSYS.
+Anything from identification of biological specimens, to automating complex
+regulations, to  aiding customers  in  selecting  from  among  a  group  of
+products, to automated user assistance is possible.
+
+Expert systems  deal with knowledge rather than data and the files they use
+are often  referred to  as knowledge bases. The rules that the program uses
+are IF-THEN  type rules.  A rule  is made  up of  a list  of IF  conditions
+(normal English  sentences or  algebraic expressions)  and a  list of  THEN
+conditions (more  sentences) or  statements  about  the  probability  of  a
+particular choice  being the  appropriate solution  to the  problem. If the
+computer determines  that all  of the  IF conditions  in a rule are true it
+adds the  rule's THEN  conditions to what it knows to be true. The computer
+determines what  additional information  it needs  and how  best to get the
+information. If  possible, the  program will  derive information from other
+rules rather  than asking  the user.  This ability  to  derive  information
+allows the  program to  combine many small pieces of knowledge to arrive at
+logical conclusions  about complex  problems. The  rule editor  allows  the
+rules to be easily modified, added or deleted.
+
+The final  goal of  an expert  system is  to select  the  most  appropriate
+solution to a problem based on the data input by the user. If more than one
+solution is  possible the  program will  provide a  list  of  the  possible
+solutions arranged in order of probability.
+
+Essentially all  of the  instruction necessary  to  run  an  expert  system
+knowledge base  is provided  by the  program and  all output  is in  normal
+English. Little  or no  training is  required to  run an  already developed
+knowledge base.  There is  even a knowledge base included that can help you
+if you have trouble running the program.
+
+EDITXS is  the expert  system rule  editor. It enables you to generate your
+own expert  system knowledge  bases. While  it requires  some training, all
+options available  to you  are displayed  on the  screen and  all input  is
+checked to  see if  it makes  sense. The "Learning to Use EXSYS" disk takes
+you step-by-step  through the  generation of  a simple knowledge base. Help
+screens are  available by  pressing [H]  for more  detailed information  on
+command options.  All input  is in  the form  of normal  English text or an
+algebraic expression.  Since most of the input is made by selecting an item
+from a  list, virtually all of the typo problems that can confuse an expert
+system are  effectively eliminated.  New rules  entered are checked against
+the existing  rules for consistency. The final decision on whether or not a
+rule should  be included  is left  up to  you. You  have various options in
+assigning and combining probability values.
+
+The EXSYS  programs are  written in  the C  language producing  small, fast
+running programs.  The programs can be run with 256k RAM and one disk drive
+with PC-DOS.  Hard disks  and the full available memory of the computer can
+be used.
+
+The EXSYS development package consists of 3 main programs:
+
+     EXSYS.EXE: The  runtime program  for running  existing  expert  system
+     knowledge bases.
+
+     EDITXS.EXE: The  program for  generating, editing and testing your own
+     expert system knowledge bases.
+
+     SHRINK.EXE: A  utility program  to compress  the  size  of  an  edited
+     knowledge base  and rearrange  the data  in a knowledge base for rapid
+     access.
+
+The remainder  of this  user's manual  is divided into two parts. The first
+covers how  to run  already written  expert system  knowledge bases and the
+second covers  how to create your own expert system knowledge bases. If you
+will only  be running  expert systems  created by  others, only  the  first
+section need  be read. (You may find the second section interesting though,
+to better understand what the computer is doing). If you will be generating
+your own knowledge bases read all sections.
+
+If you  encounter problems getting the EXSYS programs to run, put the EXSYS
+disk (or a copy of the disk with the files EXSYS.EXE, HELP.TXT and HELP.RUL
+on it) in drive A and in response to the DOS prompt A> enter:
+
+                                EXSYS HELP
+
+This will  start an expert system that will help you try to find the source
+of your problem and ways to avoid it.
+
+                                  PART I
+
+                          RUNNING EXPERT SYSTEMS
+
+
+
+EXSYS knowledge  bases can  be run  by someone with essentially no training
+other than  how to start the program. However, EXSYS offers many options to
+you in  requesting information  about what  the computer  is doing and why.
+Reading the  following description of the options available will enable you
+to better  use and  understand EXSYS.  You may find it useful to run one of
+the demo  knowledge bases such as PCDEMO while you are reading this section
+to experiment with the commands.
+
+Help screens are available by pressing [H] from most menus.
+
+
+
+CREATING AN EXSYS WORK DISK
+
+EXSYS must be copied over to a PC DOS system disk with DOS 2.0 or higher.
+
+Create a  new DOS  system disk by putting your DOS disk in drive A, a blank
+disk in drive B, and entering:
+
+                               FORMAT B: /S
+
+Remove the  DOS disk from the A drive and replace it with the EXSYS program
+disk.
+
+Copy the files EXSYS.EXE, INST.TXT and the knowledge base files you will be
+running to the system disk by entering:
+
+                    COPY A:EXSYS.EXE B: /V
+
+                    COPY A:INST.TXT B: /V
+
+Then copy the help screen files to the new disk by entering:
+
+                    COPY EX*.HLP B: /V
+
+All knowledge  base files  for EXSYS are kept in two parts: one with a .RUL
+filename extension  and one with a .TXT filename extension. Both files MUST
+be on the same disk (or RAM disk) for the program to work.
+
+If you  want to try some of the demo expert systems copy the following onto
+the EXSYS  work disk  in drive  B. (Both  the .RUL  and .TXT  files must be
+copied, e.g. COPY A:PCDEMO.* B: /V):
+
+     PCDEMO: A  small knowledge  base that  suggests IBM  PC  hardware  and
+     software necessary  for a  computer buyers' intended applications. The
+     program  also  suggests  additional  equipment  that  would  make  the
+     applications faster or easier but which is not essential.
+
+     BIRDDEMO: A  knowledge base  that identifies birds based on fieldmarks
+     provided by  the user.  This example  is limited to "peep" sandpipers.
+     This demo  also has  the capability  of  identifying  birds  based  on
+     measurements made  in the  hand. (It  is easy  to input  contradictory
+     features of  a bird  so that  all possible  species are eliminated. If
+     this happens  press [A]  to display  all choices  and you will then be
+     able to  ask what  rules eliminated  each species. To make sure you do
+     not eliminate all species you can answer all questions with 2.)
+
+     HELP: A  knowledge base to help you if you are having problems running
+     EXSYS or  EDITXS. The  knowledge base attempts to determine the source
+     of the problem encountered and ways to prevent it.
+
+You will  have the  opportunity to  run all  of these  knowledge  bases  by
+running the "Learning to Use EXSYS" disk.
+
+
+RUNNING EXSYS
+
+To run EXSYS place the EXSYS work disk you created, in drive A and turn the
+computer on  or press  the Ctrl,  Alt and  Del keys  simultaneously if  the
+computer is  already on.  You should  be prompted  for the  date  and  time
+(unless you  have added  an AUTOEXEC.BAT file to the disk - For information
+on AUTOEXEC.BAT  files see  the DOS manual). You should end up with the DOS
+prompt A>.
+
+Type in either EXSYS or EXSYS <filename>
+
+The EXSYS  work disk MUST be in the default drive, the one indicated in the
+DOS prompt.  If the  DOS prompt  is A>, EXSYS must be in the left drive. If
+you use  EXSYS from  drive C,  type C:[ENTER]  to make C the default drive.
+Attempting to  run EXSYS  from other than the default drive will lead to an
+error message about the overlay program not being able to find a file.
+
+You can  enter the  filename of  the knowledge base to be run when you call
+the program from DOS by entering the filename after EXSYS. If the knowledge
+base file  is on  other than  the default drive, enter the drive designator
+with the filename. For example,
+
+                              EXSYS B:PCDEMO
+
+would load  EXSYS from  the default drive and then load the knowledge base,
+PC DEMO, from drive B. The filename of the knowledge base to be used should
+NOT include  an extension  after the  period in  the name.  EXSYS will  add
+extensions of  .RUL and  .TXT to  the filename.  (For example, PCDEMO is an
+acceptable filename to use but PCDEMO.RUL would not be.)
+
+If you entered just EXSYS, without a filename, the program will display the
+title screen and ask you for a filename. If the knowledge base files are on
+a drive  other than the default drive, it is necessary to specify the drive
+designator. For example if the DOS prompt A> showed the default drive to be
+A and the knowledge base files are on drive B, enter b:<filename>.
+
+EXSYS supports  color and  uses color  to highlight certain information. If
+you are  using the  IBM monochrome  display or  a color  monitor, load  the
+program as described above. If you are using a monochrome display (green or
+amber display)  connected to  the color output board, you may find the text
+difficult to  read and  should switch  the program's use of color off. (The
+extent of  this problem varies with the monitor.) Color can be switched off
+by entering  NOCOLOR in  the line  when you  call up  the program  from DOS
+(e.g., EXSYS  NOCOLOR). If  there is  a knowledge base file you are calling
+up, put NOCOLOR at the end (e.g., EXSYS filename NOCOLOR).
+
+Once a knowledge base filename has been supplied to EXSYS, the program will
+check to  see if  the file  is on the disk. If the knowledge base files are
+not present,  the programs  will tell  you and  will then  ask for  another
+filename.
+
+The program will always load the portion of the knowledge base contained in
+the .RUL  file into  memory. If  there is  not enough  memory  to  run  the
+knowledge base,  the program  will tell you. The program will then check to
+see if there is adequate memory to read the .TXT part of the knowledge base
+into memory.  If space is available, the .TXT file will be read into memory
+and the program will run MUCH faster.
+
+If there is not enough memory to load the .TXT file in memory, you will NOT
+get an  error message  and the program will run correctly. The program will
+access the  .TXT file  from the disk as it is needed. In this case the disk
+with the  knowledge base MUST remain in the disk drive while the program is
+running. DO  NOT USE  RAM DISKS WITH THE EXSYS RUNTIME PROGRAM. They reduce
+the memory available to the program and can lead to the computer not having
+room to  store the  .TXT file  in memory.  In such a case the RAM disk will
+actually slow the program down.
+
+If the  file is  not found,  EXSYS will  tell you  and you may re-enter the
+correct filename or change disks to the one with the files.
+
+Once you  have entered  an acceptable filename and the knowledge base files
+have been  loaded, you  will be asked if you wish instruction on how to run
+EXSYS. If  you haven't  run the program in a while, you may wish to refresh
+yourself on  the program  and should  press [Y].  If you  do not  wish  the
+program to  display instructions  press [N]  (the "N"  key) or just [ENTER]
+(the large backarrow key to the right of the letter keys).
+
+
+
+RECOVERING DATA
+
+You will  then be  asked if  you want  to recover  data from a previous run
+stored on  the disk. The EXSYS runtime program allows you to store the data
+you have  entered up to that point, leave the program and be able to return
+to that  point at  a later  time. If  you have stored such data and want to
+recover it,  press [Y]. You will then be asked for the filename of the file
+holding the stored input data. The program will read in the data and, after
+displaying the starting title screens, return to where you left off. If you
+do not wish to recover stored data press [ENTER] or [N].
+
+
+
+EXSYS DISPLAYS
+
+The computer will display the subject of the knowledge base and the author.
+Press any key to continue.
+
+You will then, probably, be shown information explaining the knowledge base
+you will  be running. This display is an option selectable by the knowledge
+base author.
+
+The program  will then  ask if  you wish to have the rules displayed as the
+program determines  them to  be true.  The default  value  will  have  been
+selected by  the knowledge  base author  and will be displayed. The program
+runs faster  if it  does not  have to display the rules; however, the rules
+show the  user how  the program  is progressing and may help to educate the
+user. Regardless  of your  selection here you will still be able to see the
+rules through  the use  of the "WHY" command or when the final selection of
+choices has been made. These commands will be explained shortly.
+
+
+
+INTERACTING WITH EXSYS
+
+The computer  will start  asking you questions relevant to the subject area
+of the  knowledge base.  This is how the program obtains the data needed to
+make a  decision. There  are two  types of  questions  you  may  be  asked:
+multiple choice and numeric value.
+
+Multiple choice  questions will  display a  statement  ending  in  a  verb,
+followed by  a numbered list of possible completions of the sentence. Enter
+the number  or numbers  of the choices correct for your situation and press
+the [ENTER]  key. If  more than  one number is chosen, separate the numbers
+with a  space or  comma. If  numbers outside  the range  of  the  list  are
+entered, the computer will re-ask the question. (In fact you won't get past
+the question until you answer it.)
+
+The other  type of  information you  may be  asked for  is a numeric value.
+There will  be an  explanation of  what information the program needs and a
+space to  enter the  value. Type  a numeric  value and  press [ENTER].  The
+number can include a decimal point.
+
+The computer will continue asking questions. When the computer has obtained
+enough information  to determine  that all  the IF conditions in a rule are
+true, it  will display  the rule,  (unless we  have opted to not have rules
+displayed as  they are used). If the computer determines that any of the IF
+conditions in  a rule are false, it will reject the rule and go to the next
+appropriate rule.
+
+
+
+RULES
+
+Rules are  the representation of the knowledge in the expert system. A rule
+is one or more statements in the IF part followed by one or more statements
+in the  THEN part  with a  note, if necessary, to highlight some key point.
+The statements are plain English sentences or algebraic expressions and are
+just the sort of questions the computer has been asking you. There may also
+be "choices"  in the  THEN part.  Choices are the possible solutions to the
+problem the  expert system was written for. Choices are indicated by a text
+statement followed  by "-Probability="  and either  0, 1 or a ratio. A well
+written rule should be easy to read.
+
+There  are  three  main  systems  available  in  EXSYS  for  assigning  the
+probability value. Only one system can be used in a given knowledge base.
+
+     1. 0  or 1 System: If the value following the "Probability=" is a 0 or
+     1 you  are in  this system.  A value  of 0  means  absolutely  no  and
+     eliminates the  possible solution  from further consideration. A value
+     of 1  is equivalent  to absolutely  yes and  selects that solution for
+     inclusion in the final list of solutions. There is no real probability
+     in this system; only yes or no.
+
+     2. 0-10  System: If  the value following the "Probability=" is a ratio
+     where the  denominator is 10, you are in this system (eg. Probability=
+     3/10). This is the most generally useful system and the one most often
+     encountered. In  this system  0/10 is  equivalent to absolutely no and
+     locks the  value at  0/10 regardless of any other value the choice may
+     have received.  A value  of 0/10  eliminates the  choice from  further
+     consideration. A  value of 10/10 is equivalent to "absolutely yes" and
+     also locks  the value  for the choice at 10/10 regardless of any other
+     values the  choice may  have received.  Values of  1  to  9  represent
+     degrees of certainty ranging from "very probably no" to "very probably
+     yes". The values from 1 to 9 DO NOT lock the value and are averaged to
+     give the final value for a choice.
+
+     For example, if a choice appears in three rules that had true IF parts
+     with values  of 3/10,  8/10 and  4/10, the  final value for the choice
+     will be  the average:  5/10. If  the values  found were 3/10, 9/10 and
+     0/10, the  0/10 would  prevail and  result in  a final  value of  0/10
+     regardless of  other values.  Likewise, if  the values were 1/10, 3/10
+     and 10/10,  the 10/10  would lock the value at 10/10 regardless of the
+     previous lower  values. Values  of 1-9  are averaged  to a final value
+     ONLY if  not over-ridden  by a  0/10 or 10/10. The first 0/10 or 10/10
+     prevails and will not be changed even by another 10/10 or 0/10.
+
+     3.  0-100   System:  If  the  ratio  following  "Probability="  has  a
+     denominator of  100 you are in the 0-100 system. In this system values
+     of 0  to 100  can be  assigned but the values of 0 and 100 DO NOT lock
+     the value.  The final  value can  be computed  as an  average  of  the
+     probabilities  or   can  be   combined  as  dependent  or  independent
+     probabilities. The author of the knowledge base will have selected the
+     appropriate method of combining values.
+
+
+
+ASKING ABOUT RULES
+
+When a  rule is  displayed you  have the  option of asking how the computer
+knows a  condition in the IF part is true. To do this enter the line number
+of the IF condition. The computer will respond with one of four responses.
+
+     1. The  computer will  display the  rule or  rules that  allowed it to
+     derive  the   information.  A  rule  used  for  derivation  will  have
+     information about the condition you are asking about in its THEN part.
+     You can  then continue  asking how  the computer  knew that  rule's IF
+     conditions were  true and  so on. If you ask about a condition that is
+     an algebraic  expression, the  values of  each of the variables in the
+     expression will  be displayed.  You may then ask how these values were
+     derived by entering the number of the variable.
+
+     2. If you ask the program how it knows a condition is true that it did
+     not derive,  but determined by asking you for input, the computer will
+     respond that you told it the information was true.
+
+     3. You  can ask  for information  about a  condition that  is  several
+     conditions down  in the  list and  which the computer may not have yet
+     tested. (This  can occur  when you ask the computer WHY in response to
+     its question.)  If this  is the case the computer will respond that it
+     does not yet know if that condition is true or not.
+
+     4. In  certain situations  where the  computer has  just  derived  new
+     information, it  may tell  you that the condition you are asking about
+     is false and the rule will be eliminated.
+
+Rules often  have references for the source of the knowledge (e.g. personal
+observation, book,  article, etc.). If, when a rule is displayed, you press
+[R] the computer will display the reference for the rule if one was entered
+by the person that developed the knowledge base.
+
+
+
+When you  are finished  examining the  rule, press [ENTER] to continue with
+the expert system. The computer will continue asking you questions.
+
+
+
+USING "WHY"
+
+If you  wonder why  the  program  needs  to  know  the  information  it  is
+requesting, ask  it by  typing WHY,  instead of making a selection from the
+list of  values, and  press the  [ENTER] key.  The program  will respond by
+displaying the  rule it is trying to determine the validity of. You may now
+ask the  program about  the IF  conditions or reference as described above.
+Press [ENTER] when you are finished examining the rule. The program may now
+have the  question originally  asked redisplayed  or it may display another
+rule. If the latter is the case, it is because the first rule displayed was
+being used  only to derive information needed by the second, and the second
+is the rule actually being tested. (One of the first rule's THEN conditions
+will be  in the  new rules  IF conditions.) All of the options about asking
+for information  on the rule are again available. The program will continue
+showing the  rules it  is using  to derive information until it reaches the
+base rule it is trying to apply. This rule will have at least one choice in
+its THEN part.
+
+Press the  [ENTER] key  to continue  the program. If more than one rule was
+displayed, each  time you  press [ENTER]  you will  go one rule up the list
+being used  in the  derivation. You  will then  be reasked the question you
+responded to with "WHY".
+
+
+
+SAVING DATA WITH "QUIT"
+
+You also  have the  option of  storing the  data you  have input  into  the
+program, exiting  the program,  and being  able to return to the same point
+later. This  can be useful if you need to look up information needed by the
+program or  if you  must leave  the program but don't want to lose the data
+you have  already input.  You can select to store the data by entering QUIT
+in response  to any  of the  computer's requests for data. The program will
+then ask for the name of the file to store the data in. Enter a filename of
+up to  8 characters.  DO NOT  USE THE NAME OF THE KNOWLEDGE BASE. If a file
+already exists,  with the  name you  have chosen,  it will  be  erased  and
+replaced with the new data. You will then be asked if you wish to return to
+the program  or exit to DOS. (You may also store the data input by pressing
+[Q] when the sorted list of choices is displayed).
+
+
+
+DISPLAY OF THE LIST OF CHOICES
+
+The program will continue asking questions until it has considered all of
+the possibilities the person who wrote the knowledge base put in and it
+will then display its results. Just prior to the display of the results,
+the program may display information interpreting the meaning of the values
+assigned to the choices. The inclusion of this explanation is an option
+available to the knowledge base author. The choices will then be displayed
+arranged in order by final value. The most likely first, next most likely
+second, etc. Only choices that received a final value greater than 0 will
+be displayed. You may also find other statements or calculated values
+displayed. These will be displayed as a statement or a statement followed
+by a numeric value.
+
+The choices  that are  in the list will each have a probability value. This
+is the  final value  obtained by combining the values from all of the rules
+used that  had that  choice in  them. ONLY  the numerator will be displayed
+(e.g. 3 not 3/10).
+
+This final  value can  be used  as a  confidence factor  for a  variety  of
+purposes. A  value of  9 or  10 should  give you  high  confidence  in  the
+identification.  A   comparison  of   the  values  indicates  the  relative
+likelihood of  the choices.  (e.g. If  the first  choice gets  a 9  and the
+second an  8, both  are almost  equally likely.  On the  other hand, if the
+first choice got a 9 and the second a 3, the first is much more likely than
+the second.)  You may  also find text statements with no associated numeric
+value displayed.  These are  notes to the user that were marked for display
+by a  rule. They  are not  choices and will ALWAYS appear after the list of
+choices regardless  of their  degree of  certainty. If you are using color,
+such statements are displayed in a different color from the choices.
+
+You may also have numeric values calculated by the program displayed. There
+will be  a text  statement followed  by a  number. Like  the text statement
+described above,  the display  of variables  ALWAYS comes after the list of
+choices and is a different color.
+
+When you  have the final sorted list of choices displayed, you have several
+options. In the initial display, only choices that received a value greater
+than zero will be displayed. You have the option of having all choices that
+were found  in rules,  even those  with a final value of zero, displayed by
+pressing the  [A] key.  If you have pressed the [A] key to have all choices
+displayed and  would prefer  to only  see the ones with values greater than
+zero press  the [G]  key. If  no rules  in the  knowledge base applied to a
+choice, it has no value and even the [A] key will not display it.
+
+
+
+ASKING HOW A CONCLUSION WAS REACHED
+
+You can  ask the  computer how it arrived at its final value for a specific
+choice or  why a  statement is  displayed. If you enter the line number for
+any choice or statement, the computer will respond by displaying all of the
+rules it used to determine the value of that choice or statement. You again
+have all  of the  options in  requesting more information about each of the
+rules as  discussed above.  If you wish to learn why a choice not displayed
+was eliminated  by being  given a probability value of 0, press [A] to have
+all choices  displayed. Then  enter  the  line  number  of  the  choice  in
+question.
+
+
+
+CHANGING THE SORT CRITERIA
+
+If the knowledge base you are using is based on the system that uses choice
+values from  0-100, you have the option of changing the way the final value
+of the  choices is calculated. To change the sorting criteria press [S]. If
+the knowledge  base is  not based on choice values from 0- 100 the computer
+will respond  that there  is no alternate sorting criteria for the data. If
+it is  based on  the 0-100 system you will be given the option of selecting
+average value  [A], or combining the data as a dependent [D] or independent
+probability [I].  See "Nomenclature" in Part II for more information on how
+these values are calculated.
+
+
+
+CHANGING AND RERUNNING THE DATA
+
+EXSYS provides  a very  easy way  to test and analyze the effect your input
+had on  the final  list of  choices. You  can change  one or  more of  your
+answers, while  holding the remainder constant, rerun the data and see what
+effect the  changes have  on the  final outcome.  The current value for the
+choices can be saved for comparison with the new values.
+
+To change  the data  press [C].  You will  be asked if you wish to save the
+current values  for comparison  with the  new ones you will be calculating.
+The program will then display a list of all of the information you provided
+by answering  questions. Enter  the number  of the  statement you  want  to
+change and  the program  will reask that question. Answer the question with
+the new  values that  you wish  to try.  The computer  will return  to  the
+display of  all of  the information  that you  told it.  Continue  changing
+statements until  the data  is the way you want it, then press [R] to rerun
+the data. If, due to the changes, the program now needs more information it
+will ask  for it.  The rules  will not  be displayed  during the rerun. The
+program will then display the new list of choices. If you opted to have the
+previous  values   saved  for   comparison,  they   will  be  displayed  in
+parenthesis.
+
+You can  change the  data again in almost the same way. The only difference
+is that when you press [C] you will be given 3 options:
+
+     1. Keep the original values for comparison
+     2. Keep the most recently calculated values for comparison
+     3. Don't keep any comparison data
+
+The ability  to change and rerun the data allows expert system models to be
+built and tested and to see if an answer that you were not sure of is vital
+to the final outcome, or really has little effect.
+
+
+
+STORING THE RESULTS
+
+You can  store the input provided to reach the conclusions by pressing [Q].
+This is  the same  as using  the QUIT  option when  entering data. The data
+input will be stored in a disk file and you will be able to return directly
+to this  point. This  is particularly useful if you want to experiment with
+the "change and rerun" command.
+
+
+
+PRINTING THE RESULTS
+
+You may  wish to  save a printed copy of the results of the run. To do this
+press [P].  You will  be asked  if you  wish to  have the data you told the
+computer also printed. If you press [Y] you will have both the final sorted
+list of  choices printed  along with  all of  the  data  you  provided  the
+computer in answer to its questions.
+
+
+
+EXITING THE PROGRAM
+
+When you  have finished  examining the  choices press the [D] key. You will
+then be  given the option of running the program again with either the same
+or a different knowledge base file.
+
+The program  can fully  explain how  it arrived  at its  conclusion. If you
+disagree with  the computer's  rules, it may indicate a problem or error in
+the rules.  To correct  this, contact  the person  that wrote the knowledge
+base or  if you  want to  try changing  it yourself,  edit the  rules  with
+EDITXS.
+
+
+                                  PART II
+
+
+                             CREATING YOUR OWN
+                              EXPERT SYSTEMS
+
+
+EXSYS expert  systems are  generated using the rule editor program, EDITXS,
+which enables  you to  easily edit  rules along with providing a simple and
+rapid way  of putting  rules into the computer and testing the rules as you
+generate them. All new rules are checked against all existing old rules for
+consistency. Rules entered can be run without leaving the editor.
+
+Before we can start developing expert systems we need to define a few terms
+that we will be using.
+
+
+NOMENCLATURE
+
+To understand  how the  EXSYS expert  systems are generated we will need to
+understand  the  definitions  of  six  terms:  knowledge  base,  condition,
+qualifier, value,  choice and  rule. (Don't worry about understanding every
+detail in  this section.  It will become clearer when you actually start to
+use the programs.)
+
+KNOWLEDGE  BASE:   Expert  systems   work  with   knowledge  to  arrive  at
+conclusions. This  knowledge is  in the form of rules that both you and the
+computer can  understand. The set of rules to solve a particular problem is
+often referred to as a knowledge base.
+
+CONDITION: A  condition is  simply a statement of fact (or potential fact).
+In EXSYS,  there are two types of conditions: text and mathematical. A text
+condition is  a sentence  that may  be true or false. For example "THE BACK
+COLOR IS  BROWN" or  "THE BILL IS OVERDUE". The condition is made up of two
+parts, a  QUALIFIER and  one or  more VALUES.  The qualifier is usually the
+part of  the condition  up to and including the verb (In the above examples
+THE BACK COLOR IS and THE BILL IS). The values are the possible completions
+of the  sentence started  by the qualifier. When a new qualifier is created
+in EXSYS  it is  given a  list of  possible values  such that combining the
+qualifier with  a value (or values) makes a sentence. In the above examples
+the value  list associated  with THE  BACK COLOR  IS might be BROWN, WHITE,
+BLACK, GREEN  or BLUE.  The value list associated with THE BILL IS might be
+OVERDUE, NOT YET DUE, or PAID. When we create a text condition in a rule we
+will select  a qualifier  and then  select one  or more  values to form the
+sentence that will be the condition.
+
+When more than one value is selected, the program will put "or" between the
+values and,  if any  one of the listed values is true the condition will be
+true. For  example, we  might form  a condition  THE BACK COLOR IS GREEN OR
+BLUE. If  the back  color is green, the condition will be true. If the back
+color is  white, the  condition is false. A condition can also be formed by
+using a qualifier, "NOT" and one or more values. For example, we could form
+the condition THE BACK COLOR IS NOT BLUE. In this case if the back color is
+actually green,  or any  color other than blue, the condition will be true.
+(In the  THEN part  of a rule the "or" connector is replaced by "and" since
+all of the values in the THEN part are considered to be true if the rule is
+applied).
+
+The selection  of qualifier  and values  should be such that combining them
+with NOT,  OR or  AND makes a grammatically correct sentence. (EXSYS cannot
+tell, and  does not  care, if  the sentence  is grammatically  correct, but
+users find it much easier to read correct grammar.)
+
+The other  type of  conditions we will be using are mathematical conditions
+which are represented as algebraic expressions such as
+
+                        [X]+10 > SIN([X] * 5) + .1
+
+that can  be tested  for validity.  The use  of mathematical expressions is
+discussed later.
+
+CHOICE: Choices  are all  the possible solutions to the problem among which
+the expert  system will  decide. The  goal of  EXSYS is  to select the most
+likely choice  based on  the data  input, or  to provide a list of possible
+choices arranged  in order  of likelihood.  The choices can be of any form:
+item, actions,  etc., depending  on what  type of  expert system  is  being
+developed. EXSYS  will display  the text  of the  choice followed  by  "  -
+Probability=" and  a number.  The number  indicates the confidence that the
+choice is  correct and  is 0, 1 or a ratio such as A/B. The denominator, B,
+indicates  the   maximum  possible   value  (either   10  or  100)  in  the
+calculational system being used. The numerator, A, is the probability value
+assigned to  the choice.  The person  generating the  knowledge  base  must
+select one  of three  options for  how the program will use the probability
+data.
+
+     1. Choices  get a  0 or 1 value. This is equivalent to "yes" and "no".
+     There is no probability involved and the first rule found that has all
+     its IF  conditions true  and has  the choice in its THEN section, sets
+     the value.  This is  generally used  in knowledge  bases  that  simply
+     select multiple  items from a list. This system will display values of
+     0 or 1, not ratios.
+
+     2. The  choices are  given a value of 0-10. Values in this system will
+     be displayed as ratios and the denominator of the ratio will always be
+     10. This  system, is  the one  most often  used. The  values 0  and 10
+     permanently fix  the value of the choice at 0 or 10 and are equivalent
+     to "absolutely  no" and "absolutely yes". 0 and 10 should be used only
+     for rules  that definitively  establish or eliminate a choice, as they
+     override any  other values  the choice may have had. The first 0 or 10
+     that a  choice receives  permanently sets its value, even a later 0 or
+     10 will  not change  it. The  values of  1 to  9 represent  degrees of
+     confidence ranging from "very probably no" to "very probably yes". The
+     values from  1 to  9 are  averaged over  all of  the rules  used  that
+     contain the  choice to  arrive at  a final  value for the choice. This
+     value can  then be  compared  to  the  values  for  other  choices  to
+     determine which is the most likely.
+
+     For example, if a choice appears in three rules that had true IF parts
+     with values  of 3/10,  8/10 and  4/10, the  final value for the choice
+     will be  the average:  5/10. If  the values  found were 3/10, 9/10 and
+     0/10, the  0/10 would  prevail and  result in  a final  value of  0/10
+     regardless of  other values.  Likewise, if  the values were 1/10, 3/10
+     and 10/10,  the 10/10  would lock the value at 10/10 regardless of the
+     previous lower  values. Values  of 1-9  are averaged  to a final value
+     ONLY if  not over-ridden  by a  0/10 or 10/10. The first 0/10 or 10/10
+     prevails and will not be changed even by another 10/10 or 0/10.
+
+     3. The  most complex  system is  one which assigns a value of 0-100 to
+     each choice.  These values  will be  displayed  as  a  ratio  and  the
+     denominator of the ratio will always be 100. Values of 0 or 100 DO NOT
+     lock the  final values.  The final combined value may be calculated in
+     three ways.  The first  is a  simple average  of all of the individual
+     values the  choice received  in the rules found to be true. The second
+     combines the  probabilities as  if they  were dependent probabilities.
+     That is, the probabilities are multiplied as percents (For example: if
+     a choice  appeared in  two rules that were used, with values of 60/100
+     and 90/100,  its final value would be (60% times 90% =54%) for a final
+     value of  54/100. The  third way  to combine  the values is as if they
+     were independent  probabilities. In this system the combination of the
+     two probabilities  is 1  minus the  product of  1 minus the individual
+     probabilities. In the example above this would be
+
+                         1-((1-60%) * (1-90%))=96%
+
+     for a final value of 96.
+
+     Clearly the  calculation system  used to calculate the final value can
+     have a  large effect.  If the knowledge base uses the 0-100 system you
+     will have  the option  of calculating the final value any of the three
+     ways for comparison. The default method will have been selected by the
+     knowledge base author.
+
+All rules  should have  a choice  in them unless they are intended only for
+the derivation of information only.
+
+RULE: Rules  are the way the knowledge that allows the program to arrive at
+its conclusions  is represented.  A rule  is divided into four parts: an IF
+part, a THEN part, an optional NOTE and an optional REFERENCE.
+
+
+
+                 IF
+                    Condition 1
+               and  Condition 2
+               and  Condition 3
+                      .
+                      .
+                 THEN
+                    Condition n
+               and  Condition n+1
+               and  Choice 1
+               and  Choice 2
+                      .
+                      .
+               NOTE: --------------------
+               REFERENCE: ---------------
+
+The IF  part is  simply  a  series  of  conditions,  expressed  as  English
+sentences or  algebraic expressions.  The  computer  tests  the  conditions
+against the  answers provided by a user and information that can be derived
+from other rules, to see if the IF conditions are true.
+
+The THEN  part is  also a  series of conditions; however, there can also be
+choices with  their associated  probability values.  When EXSYS is run, the
+program determines  which rules  are applicable  to a  specific choice  and
+tests the  conditions in  that rule's IF part to see if they are true. When
+the IF  conditions in a rule are determined to be true the computer assumes
+the THEN  part is  true and  adds any THEN conditions to what it knows. The
+THEN part can also contain choices (the possible solutions to your problem)
+along with  their assigned  probability values.  EXSYS keeps  track of  the
+value each  choice receives in the rules it is used in to calculate a final
+value for the choices. The THEN conditions may also include statements that
+assign a  numeric value  to a variable. This allows values to be calculated
+during an EXSYS session and, optionally, displayed at the end.
+
+In some  cases it  is desirable  to add  a note  to a  rule to provide some
+special information  to the  user. If there is a note, it will be displayed
+with the  rule. The  note does not mean anything to the program, it is only
+for the user's information.
+
+The developer  of the expert system knowledge base may also add a reference
+for a  rule. This  is intended  to help  the user  find the  source of  the
+knowledge contained in the rule or more information if they should need it.
+As with  the note  this is optional and only for the user's information, it
+has no  effect on  the running  of the  program. The difference between the
+note and  the reference  is that the note is displayed whenever the rule is
+displayed. The  reference is  displayed  only  if  the  user  requests  the
+reference; it is not automatically displayed with the rule.
+
+
+
+RUNNING THE "LEARNING TO USE EXSYS" DISK
+
+If you have not already done so, run the "Learning to Use EXSYS" disk which
+came with  your program.  Load DOS and then put the "Learning to Use EXSYS"
+disk in  drive A. The learning disk will let you run several demo knowledge
+bases and then show how a knowledge base is created. If you want to run the
+demo knowledge bases first enter:
+
+                                   LEARN
+
+If you  want to go directly to the demonstration of how a knowledge base is
+created enter
+
+                              EDITDEMO LEARN
+
+The demo  on how  to generate  your own  knowledge  base  will  display  an
+explanation of  each command,  show you  the command and let you watch as a
+knowledge base  is created and edited. All you will have to do is press the
+space bar.  Once you have seen a knowledge base developed, you will find it
+much easier to develop your own. You may want to follow the commands in the
+manual. THIS IS THE BEST WAY TO LEARN EDITXS.
+
+
+
+CREATING AN EDITXS WORKING DISK
+
+EDITXS must be copied over to a PC DOS system disk with DOS 2.0 or higher.
+
+Create a  new DOS  system disk by putting your DOS disk in drive A, a blank
+disk in drive B, and entering:
+
+                               FORMAT B: /S
+
+Remove the  DOS disk from the A drive and replace it with the EXSYS program
+disk.
+
+Copy the files EDITXS.EXE, and INST.TXT to the system disk by entering:
+
+                    COPY A:EDITXS.EXE B: /V
+
+                    COPY A:INST.TXT B: /V
+
+Then copy the help screen files to the new disk by entering:
+
+                    COPY *.HLP B: /V
+
+
+
+INPUTTING TEXT IN EDITXS
+
+EDITXS allows  you to  edit text  as you  enter it.  When using the runtime
+program, EXSYS.EXE,  you were  only  able  to  erase  characters  with  the
+backspace key.  In EDITXS  various keys  allow you  to change text you have
+input without  having to do so much retyping.  You will also be able to use
+these same  editing keys  to modify  text that  is already in the knowledge
+base.
+
+     Cursor keys  - These  are the  arrow keys  on the  right side  of  the
+     keyboard. They  will move the cursor in the direction indicated by the
+     arrow.   The cursor  can not  move outside  of the  area of text being
+     worked on.
+
+     [DEL] - Deletes character under cursor
+
+     [INS] -  Allows the  inserting of text at the cursor point. The insert
+     mode is indicated by a large cursor. All alphanumeric characters typed
+     are inserted  into the  text. Insert  mode is  ended by pressing [INS]
+     again or by pressing one of the other editing keys.
+
+     [END] - Moves cursor to the end of the text
+
+     [HOME] - Moves cursor to the start of the text
+
+     [CTRL][END] - Deletes all text from the cursor point to the end of the
+     text.
+
+     [CTRL][HOME] -  Deletes all  text from  the start  of the  text to the
+     cursor point
+
+     [ENTER] -  Pressing the  [ENTER] key tells the program the text is the
+     way you want it and to accept the text. The cursor does not have to be
+     at the end of the text when you press [ENTER].
+
+The cursor  keys can be used to position the cursor in the text and you can
+overstrike  to   make  corrections.   During  all  operations  wordwrap  is
+maintained.
+
+When you  correct text that is already in the knowledge base, the text will
+be displayed  with the cursor on the first character. You can edit the text
+using the  above commands  without retyping the entire text. When you press
+[ENTER] the new text will be accepted as input.
+
+When you  are editing  existing text  it is important to remember that SOME
+text, such  as a  qualifier, can not be totally deleted by the text editing
+functions. You  can change  the qualifier  but not  eliminate  it.  If  you
+attempt to  delete all  of the  qualifier, the  program will  keep the text
+unchanged. The program will tell you when you are editing text that can not
+be entirely  deleted. (As we will see later there are others ways to delete
+an entire qualifier.)
+
+
+
+STARTING EDITXS
+
+EDITXS is run from DOS. In response to the DOS prompt A> enter:
+
+                                  EDITXS
+
+or
+
+                             EDITXS <filename>
+
+If you  use the  second form the EDITXS program will load and automatically
+call the knowledge base file, <filename>, for editing.
+
+The file  EDITXS MUST  BE ON  THE DEFAULT  DRIVE for  the program  to  work
+properly. If  you run  EDITXS from  drive C,  type C:[ENTER]  to make C the
+default drive.  If you  use EDITXS  on other  than the  default drive,  the
+overlay loader  may not be able to find the files it needs and will give an
+error message.
+
+EDITXS works  with two  files. Both start with the filename entered but one
+has a  file extension  .TXT and the other a file extension .RUL. EXSYS will
+add extensions  of .RUL  and .TXT to the filename. BOTH OF THESE FILES MUST
+BE KEPT ON THE SAME DISK OR THE PROGRAM WILL NOT WORK.
+
+If no  filename was  specified when EDITXS was called, the program will ask
+you for a filename. The program will not accept extensions past a period in
+the filename.  If the  knowledge base  files are  on a drive other than the
+default drive,  it is  necessary  to  specify  the  drive  designator.  For
+example: if  the DOS  prompt A>  showed the  default drive  to be A and the
+knowledge base files are on drive B, enter
+
+                               b:<filename>
+
+EDITXS supports  color and  uses color to highlight certain information. If
+you are  using the  IBM monochrome  display or  a color  monitor, call  the
+program up  as usual. If you are using a monochrome display (green or amber
+display) connected  to the  color output  board,  you  may  find  the  text
+difficult to  read. (The  extent of  this problem varies with the monitor.)
+Color can  be switched  off by  entering NOCOLOR  in the line when you call
+EDITXS from  DOS (e.g., EDITXS NOCOLOR). If you want to include a knowledge
+base file  name and still turn off the display of color, put NOCOLOR at the
+end (e.g., EDITXS <filename> NOCOLOR).
+
+The program  will check to see if the file requested is on the disk. If the
+knowledge base  file is  on the  disk, the  program will load the knowledge
+base rules from the <filename>.RUL file.
+
+EDITXS does  not load  the .TXT file into memory. The .TXT file is accessed
+as needed  from the  disk and  the disk MUST remain in the disk drive while
+the program  is running.  Unlike the  runtime program,  you can  obtain  an
+improvement in  performance by using a RAM disk program with EDITXS. If you
+use a  RAM disk,  both the .TXT and .RUL files must be copied to it. If you
+use a  RAM disk  be sure  NOT to run out of disk space. When you run out of
+space on  a floppy  disk, you  can replace  the disk  with a  new  disk  to
+continue, but this is NOT possible with a RAM disk.
+
+If the  file that  you requested is not on the disk, the computer will tell
+you that  the file  is not  on the disk and ask if you wish to create a new
+file. If  you press  [N], the  program will ask you for another filename to
+look for.  If you press [Y] the program will start creating a new knowledge
+base.
+
+
+
+STARTING A NEW KNOWLEDGE BASE
+
+Once you  have called  EDITXS from DOS and told the program the name of the
+file you  want to  work on,  you will  first be  asked some  questions that
+define the type of expert system being generated.
+
+If you  are starting  a new  expert system,  the computer  will ask for the
+subject of the knowledge base and the author. These items must be input and
+will appear  at the start when the expert system knowledge base is run with
+EXSYS.
+
+You will  then be  asked which of the three systems of calculation you wish
+to use:
+
+     1. Choices given only values of 1 or 0.
+
+     2. Choices given integer values from 0 to 10.
+
+     3. Choices given integer values from 0 to 100.
+
+(The "Nomenclature" section discusses these three systems in greater detail
+and the  section on  techniques for  developing  knowledge  bases  provides
+information on  when to use each type.) Unlike the other selections we will
+make, the calculational system CAN NOT be changed later.
+
+If you  select the  0-100 system  you will be asked how you want the values
+combined: as  an average,  as dependent  probabilities  or  as  independent
+probabilities (see the Nomenclature section for details on these modes).
+
+You will then be asked to select the number of rules used in the derivation
+of information  from other  rules. The  computer can  attempt to  apply all
+rules that  are relevant  to a  specific qualifier  it is  trying to derive
+information on, or it can stop after the first successful rule. The default
+is to  use all rules but this can lead to unnecessary questions being asked
+in some  cases. If  in doubt use the default value of using all rules. This
+can always be changed later after you test the knowledge base.
+
+You will  then be  asked for  the explanatory  text that  you wish  to have
+displayed when  the knowledge  base is run with EXSYS. The explanatory text
+allows you  to explain  to the user exactly what the knowledge base will do
+and what  the results  mean. You  will first be asked for the starting text
+which will  be displayed just after the subject and author screen. You will
+then be asked for the ending text which will be displayed after the program
+stops asking  questions and  before it displays the sorted choices. Both of
+these text  sections are  optional but it is recommended that at least some
+interpretation of the final list of selected choices be included.
+
+You will  then be  asked if  you wish  to have  the rules displayed, as the
+default case,  when the  knowledge base is run. Programs run faster and may
+be less  confusing to  a user  if you switch rule display off, but the user
+will not  be as  easily educated  and notes  to the user may be missed. The
+user will  have the  option of  overriding this  default setting  when  the
+program is run with the runtime program.
+
+You will then be asked for the choices that you wish to use. Remember these
+are the  solutions the  program will decide among. Enter all of the choices
+that you  know you  will use.  The list  does not have to be complete since
+additional choices  can be  added at  any time  in EDITXS.  Adding them now
+merely makes  it easier to use them later and makes the disk access to them
+somewhat faster.  When all  the choices  you wish to use are entered, press
+just the [ENTER] key in response to the prompt for the next choice.
+
+The program will then ask if you wish to have new rules checked against the
+existing rules.  Mathematical formulas are not used in the rule check so if
+you are  using many  math expressions  you may  wish to have the rule check
+function switched off.
+
+You will  then be  given the opportunity to edit the subject, author, etc.,
+text that you just input and will then go to the main EDITXS menu.
+
+
+
+STARTING TO EDIT AN EXISTING KNOWLEDGE BASE
+
+If you  are editing  an existing  expert system you will first be presented
+with a menu for changing some of the parameters set when the knowledge base
+was created.  You will  be asked  if you wish to change the number of rules
+used in derivation of information, the default for the display of rules and
+if you  want new rules checked against the old ones. You will also be given
+the opportunity  to edit  the text in the subject line, author and start or
+end text  and text  associated with variables. If you wish to change any of
+these, enter  the appropriate letter. The computer will display the current
+text and  ask you to edit the text. If you decide you do not wish to change
+the text,  or if  you have  made changes  and want  to cancel  them,  press
+[ESC.]. You  will then  be asked  if you wish to change the number of rules
+used in the derivation of information.
+
+
+
+EDITXS COMMANDS
+
+The work  area for EDITXS is divided into three areas. The command menu for
+EDITXS will appear in the bottom window. The left window is the rule window
+where the rule you are creating will appear. The right window is the window
+where qualifiers with their values will be created and displayed.
+
+After you have input the starting information, EDITXS will display the main
+menu. The  main menu  has seven  options: Add rule (either [A] or [ENTER]),
+Edit rule  [E], Delete  rule [D], Move rule [M], Print rules [P], Run rules
+[R] and Store/exit [S].
+
+ADDING A NEW RULE:
+
+Press [A]  or just [ENTER] to start a new rule. If you press the [A] key it
+is not necessary to the press the [ENTER] key.
+
+A rule  is built by adding conditions and choices. We start in the IF part.
+The screen  will still  be divided  into three  areas but  the menu  at the
+bottom will change to the menu for adding conditions.
+
+Most of  the conditions you will be using will probably be text conditions.
+Text conditions  are generated  by selecting  a qualifier  (the part of the
+sentence up  to the  verb) and then associating one or more of the possible
+completions of  the sentence  with the  qualifier, to form a condition. The
+qualifier and  its value list need be entered only once, after that we will
+be able to select them by number.
+
+There are  eight options  on the  menu for  adding conditions: adding a new
+qualifier [N],  calling a  qualifier by  its  number,  recalling  the  last
+qualifier entered [L], scrolling through the qualifiers, searching existing
+qualifiers to  find text  [F], repeating a condition from the previous rule
+[R], adding  a mathematical  expression [M]  or  indicating  that  you  are
+finished with the IF part by pressing [ENTER].
+
+1. ADDING A NEW QUALIFIER:
+To add a new qualifier press [N]. The cursor will go to the top of the
+right window and you will be asked to input the text of the qualifier.
+Typically this is the part of the sentence up to and including the verb.
+You will then be prompted for the possible values for that qualifier. These
+are the possible completions of the sentence that the user will be able to
+select among. Enter those values that you can think of. A qualifier can
+have up to 30 values. The computer will not let you add more than 30
+values. Additional values can be added later up to the limit of 30. When
+all values have been added press just [ENTER] in response to the prompt for
+the next value and the list will be displayed for you to make your
+selection. You will then have the option of correcting any typos, etc. If
+you press [ESC] during the input of the qualifier or its values, it will
+cancel the input.
+
+For example,  suppose we  are creating an expert system to identify flowers
+and we  want to create a condition dealing with the color of the flower. We
+would press  [N] to add a new qualifier. The program would ask for the text
+of the  qualifier and  we would  enter THE COLOR OF THE FLOWER IS and press
+[ENTER]. The  program would  then ask  for the  list of values that we will
+give the  user to  select among.  This is  done by  displaying a number and
+waiting for the input of the value. When all of the values are input, press
+just [ENTER]  in response  to the  prompt. In  this case  we might  want to
+consider possible  colors of  red, blue,  yellow and white. The entry would
+look like:
+
+               THE COLOR OF THE FLOWER IS
+                    1  RED
+                    2  BLUE
+                    3  YELLOW
+                    4  WHITE
+                    5
+
+We would  press just  [ENTER] in  response to  the request  for value  5 to
+indicate the  values had all been entered. (We could later add other colors
+up to the limit of 30 values.)
+
+The program  would then  redisplay the  qualifier and  its values for us to
+select the  value or  values we  want to form a condition. The program will
+also display  the qualifier number assigned by the program to the qualifier
+we just entered.
+
+To create  the condition  once the  qualifier and its values are displayed,
+enter the  number of  the value(s)  desired. Using  the  previous  example,
+suppose we  want a  condition that says THE COLOR OF THE FLOWER IS RED. The
+qualifier would be displayed as:
+
+          Qualifier #1
+               THE COLOR OF THE FLOWER IS
+                    1  RED
+                    2  BLUE
+                    3  YELLOW
+                    4  WHITE
+
+Since we want RED we would enter 1 and THE COLOR OF THE FLOWER IS RED would
+appear in  the left  window. If  we wanted  the condition  THE COLOR OF THE
+FLOWER IS BLUE OR YELLOW, we would input 2,3. If we wanted THE COLOR OF THE
+FLOWER IS NOT WHITE, we would input NOT 4.
+
+
+
+2. CALLING A QUALIFIER BY NUMBER:
+Each qualifier is assigned a number. The first qualifier entered is 1, the
+second entered is 2, etc. If you know the number of the qualifier you want,
+just type its number and press [ENTER]. The qualifier and its list of
+possible values will appear in the right hand window, just as described
+above. You may then select the value(s) you desire to use in forming the
+condition. As described in the section on adding a new qualifier, multiple
+values can be selected and NOT can be used with one or more values. The
+condition will appear in the left window. If you inadvertently get the
+wrong qualifier press just [ENTER] to cancel the qualifier.
+
+If none of the values listed are appropriate press [N] and [ENTER] to add a
+new value.  The computer  will ask  you to  input the  new value  and  then
+redisplay the  entire list  for you  to make your selection. If you make an
+error in  your selection  of values,  you will be able to fix it later with
+the editor function.
+
+If there  was a typographical error in the entering of the qualifier or any
+of its  values, or  if you  just wish  to rephrase  one, press [T] and then
+[ENTER]. The  computer will  ask if the correction is in the qualifier or a
+value -  press [Q]  or [V]. If you press [Q] the old qualifier text will be
+displayed in  the right window and you will be able to edit the text. Using
+the text  editing commands  described earlier.  Press [ENTER] when you have
+completed the  modifications. If  you chose  to correct a value by pressing
+[V], the  qualifier and all of its values will be displayed and you will be
+asked for  the number  of the value to correct. Type the appropriate number
+and [ENTER].  The old  text of the value will be displayed for you to edit.
+Remember,  if  a  qualifier  or  value  is  changed  in  one  rule,  it  is
+automatically changed in ALL rules that it appears.
+
+If you  wish to  delete a  value from the list or if you wish to delete the
+entire qualifier  and all  its values,  press [D]. You will be asked if you
+wish to  delete the  entire qualifier  or one  of the values - press [Q] or
+[V]. If  you press  [V] the program will ask for the number of the value to
+delete. The  program will  then check  all of  the rules to see if the item
+(qualifier or  specific value)  is used  in any  rule. If it is not used it
+will be  deleted and  the remaining qualifiers or values will be renumbered
+accordingly.
+
+If the  item is  found to be in use you CAN NOT delete it. The program will
+display a  list of  the rules  the item is used in. You will have to modify
+the rules  so that  the item  is not used before you will be able to delete
+it.
+
+3. RECALLING THE LAST QUALIFIER ENTERED:
+If you wish to use the last qualifier entered but do not remember its
+number, press [L] and the last qualifier, along with its list of values,
+will appear in the right window. You will then be able to make your
+selections..
+
+4. SCROLLING THROUGH QUALIFIERS:
+Once you have selected a qualifier by any means (number, last, find, etc.)
+you can scroll to other qualifiers by pressing the up arrow or down arrow
+keys on the right side of the keyboard. Pressing the up arrow key will
+display the previous qualifier with its values for selection. Pressing the
+down arrow will display the next qualifier. In this way you can easily
+scroll through the qualifiers to find the one you desire. If you know a
+qualifier was one of the last ones entered, but don't know its number,
+press [L] to get the last qualifier and then press the up arrow key until
+the desired qualifier is displayed.
+
+5. SEARCHING FOR EXISTING QUALIFIER TEXT:
+If you do not know the number of a qualifier, but know that it has been
+entered, DO NOT create a new qualifier and list of values identical to the
+old one. The computer will NOT know that they are the same and will ask the
+user for ü ü 	  ü üü üü  Åü$‡·	ü 1 ü üüÅü  ü üü ü 	üüü  ü ü ü	‡· 	Åü0	üü	ü ü		üüüüü <#$1$0	ü  ü	‡·	ü 	Åüü ü üü! ü	ÅüThe computer will display
+a list of the qualifiers that have the search text in them with their
+numbers in the right windows. You may now easily select the qualifier you
+wanted by its number. If only one qualifier is found to contain the search
+text, the computer will assume it is the one you want and display the
+qualifier with its value list.
+
+6. REPEAT CONDITION FROM PREVIOUS RULE:
+It is quite often useful to have the same first few conditions at the start
+of several rules. This enables a false condition to rapidly eliminate large
+blocks of rules so the user is not asked unnecessary questions. To repeat a
+condition from the numerically previous rule, press [R]. It will copy the
+qualifier AND THE VALUES that were used in the previous rule. If you press
+[R] as the first entry, it will copy condition 1 from the previous rule. If
+you input the first condition by number and then press [R], it will copy
+the second condition of the previous rule. If the previous rule does not
+have enough conditions to match, the computer will inform you.
+
+7. MATHEMATICAL EXPRESSIONS WITH NUMERIC VARIABLES:
+You can also add numeric conditions and mathematical expressions.
+Mathematical expressions can be added in both the IF and THEN parts,
+however they are in different forms.
+
+The mathematical  expressions we will be using usually include variables. A
+variable is  any  string  of  alphanumeric  characters,  including  spaces,
+enclosed in  []. The  first 18  characters are significant but the variable
+can be up to 100 characters. Only letters, digits and spaces can be used in
+variable names.  The following  would be acceptable variable names: [COST],
+[COST OF  SYSTEM], or [X]. The following would NOT be valid variable names:
+[X%], [X/Y]  or [NAME  1.2], as  all include characters other than letters,
+digits and spaces. Variables should be descriptive of what they represent.
+
+The variables  will be  used to  create evaluable algebraic expressions. An
+evaluable expression  can be  any algebraic expression from a single number
+to complex expressions. The following operators are recognized:
+
+
+               * (multiplication)
+               / (division)
+               + (addition)
+               - (subtraction)
+               % (modulus operator)
+
+Parentheses can  be used  to group  expressions in the order of calculation
+you desire.  Spaces can  be included  between operators to make the formula
+easier to read.
+
+The following functions are supported:
+
+               SIN( )
+               COS( )
+               TAN( )
+               ASIN( )
+               ACOS( )
+               ATAN( )
+               EXP( )
+               LOG( )
+               ABS( )
+               SQRT( )
+               INT( )
+
+The trigonometric  expressions are  in radians.  The  log  and  exponential
+functions are  base e.  ABS is the absolute value. SQRT is the square root.
+INT is  the integer part, with all fractions rounded down (e.g. INT(2.8) is
+2.0). The  functions evaluate the expression in parentheses and perform the
+appropriate function  on the  result.  The  parenthetical  expression  must
+immediately follow the function name, without a space.
+
+The limits  on expressions  are no more than 20 sets of parentheses and the
+total expression must be less than 100 characters.
+
+The following would be legal in the IF part:
+
+          [X] <= 10
+          [X] + [Y] = [Z] / (12.345+[X])
+          [Y] % 7 < 3
+          SIN(ABS([X] + .3)) >= .5
+          ([X] + 1) / ([Y] + 7) < > [Z] + TAN([X] + .1)
+
+The way  mathematical expressions are input is different in the IF and THEN
+parts. This  is due to a statement in the IF part being a comparison of two
+expressions that  can be  tested for  truth while in the THEN part it is an
+assignment of  a value  to a  variable. For example, [X] = 5 in the IF part
+means "if  the value  of [X]  is 5 then the statement is true". It does NOT
+mean assign  the value  5 to [X]. Assignments of value to a variable can be
+done ONLY in the THEN part. Comparison of values can be done ONLY in the IF
+part.
+
+If we  are in  the IF  part and  wish to add a mathematical expression as a
+condition, we  press [M].  We will  be asked  for the expression we wish to
+use. You must input two evaluable expressions separated by <, >, =, >=, <=,
+<> or ><, (both <> and >< mean not equal). Math conditions in the THEN part
+will be discussed shortly.
+
+The program  checks each  new expression  for new  variable names. When you
+enter an  expression containing  a new  variable, the program will tell you
+the variable  is new  and ask  for certain information. You will be able to
+change the answers you assign later if you desire.
+
+     A. TEXT ASSOCIATED WITH THE VARIABLE
+     The program will ask for text to associate with the variable. Usually
+     this should describe what the variable  represents (the exception to
+     this will be discussed shortly). The variable name used in the formula
+     should be made descriptive enough to recognize what the variable is,
+     but the text part is where you can really get specific. For example,
+     we might have a variable [LENGTH OF BEAM] which suggests what it means
+     but the text we associate with the variable could be "The length of
+     the beam from the base to the first cross beam as measured in
+     centimeters". This allows us to tell the user exactly what information
+     we want. This is the text that will be used when asking the user for
+     the value of the variable or for displaying the value of the variable
+     at the end of a run.
+
+     B. DISPLAY OF VARIABLE
+     You then will be asked if you wish to have the variable  displayed at
+     the end of a run with the sorted list of choices. Usually this would
+     only be chosen for variables that are calculated by the program during
+     the run. However, in development, you may wish to have a variable
+     displayed to check the expert system. The display can be switched on
+     or off later.
+
+     C. ASSOCIATION OF A VALUE
+     If the variable is in the THEN part and you select to have it
+     displayed, you will then be asked if you wish to have a value
+     associated with the variable. (You will not be asked this for new
+     variables in the IF part since any variable there MUST have a value)
+     This may at first seem like a needless option, but it allows text
+     notes to be selected by rules for display at the end with the sorted
+     list of choices. If you select to have a value associated with a
+     variable and the variable displayed, the program will display the text
+     associated with the variable, "=" and the value of the variable at the
+     end of the run.
+
+     If you  choose to  NOT have  a value associated with the variable, the
+     program will  only display the text associated with the variable. This
+     is the  one case where the text need not describe the variable and the
+     text can  be displayed  as a  note at  the end  of a run. Remember, NO
+     calculations can  be done with a variable that is selected not to have
+     a value  associated with  it. Any  rule with a true IF part and with a
+     variable that you have selected NOT to have a value associated with it
+     in its THEN part, will cause the associate text to be displayed at the
+     end with  the list  of choices.  For example: We could have a variable
+     [CAUTION 1]  with text  associated "DO  NOT ALLOW  THE COMPOUND  TO BE
+     EXPOSED TO WATER".
+
+     Any time  this caution  is appropriate to the THEN part of a  rule and
+     we wish it to be flagged for display at the end of  the run, press <M>
+     to indicate  math and  just enter  [CAUTION 1]   in the THEN part. The
+     text associated  with [CAUTION  1] would   be  displayed as one of the
+     rules THEN conditions.
+
+     D. INITIALIZATION OF VARIABLES
+     You will then be asked if you wish the value initialized  at the start
+     of the run to a value. If a variable is initialized, the program will
+     NOT ask the user for its value. It will be as if the user entered the
+     initialization value. Initializing a variable is most useful for
+     calculated variables. We might have a variable [PRICE] that will
+     display the total price of the equipment recommended by the expert
+     system. Each rule that recommended a piece of equipment would include
+     an expression that would add the cost of the equipment to the running
+     total [PRICE]. For example, to add 10 to the running total for [PRICE]
+     use:
+
+          [PRICE] IS GIVEN THE VALUE [PRICE] + 10
+
+     In order  for this  to work we do not want the program to ask the user
+     for a  value for  [PRICE], instead we want it to start with a value of
+     0.0. The  starting value  can be set to 0.0 by selecting to initialize
+     the variable  and entering the  appropriate value, 0.0. Most variables
+     should not  need to  be  initialized. NEVER initialize a variable that
+     you want the  user to provide the value for, as the user will never be
+     asked for input on an initialized variable.
+
+The options  that were selected for a variable can be changed  later if you
+desire. Each  time, after you run the knowledge base rules entered with the
+run option  in the editor and return to the editing mode, you will be shown
+a list  of items  that you can modify. The list includes the starting text,
+ending text,  etc., and  also allows  the variable  options to  be changed.
+Press [V]  to select  the variables  and enter the name of the variable you
+wish to  change, without  []. You will be asked a series of questions about
+changing the options you have set for the  variable.
+
+As with  qualifiers, the  program will  backward chain to attempt to derive
+the value  for a variable rather than ask the user. If you have a rule with
+[X] <  10 in  the IF  part, the  program will check to see if there are any
+rules that  assign a  value to [X] in the THEN part. If any rules are found
+that would  allow the  value to  be derived,  those rules will be tested to
+establish the  value of  [X]. If  the program can not establish a value for
+[X], the user will be asked to input a value.
+
+8. FINISHED ENTERING CONDITIONS:
+When you are through entering the IF or THEN conditions press just [ENTER]
+to go to the next part.
+
+
+
+CONDITIONS IN THE "THEN" PART
+
+Inputting conditions  in the  THEN part is very similar to inputting the IF
+conditions with four exceptions:
+
+     1. USING  NOT: You cannot use the form "NOT" plus value number(s) when
+     selecting values for a condition. The conditions in the THEN part must
+     be affirmative  not negative. If NOT is part of the text of one of the
+     values, it can be used.
+
+     2. DISPLAY  OF "AND": If multiple values are selected for a qualifier,
+     they will  be connected by "and" rather than "or", as they were in the
+     IF part.  This is  because in the THEN part all of the values are true
+     if the IF part is true.
+
+     3. MATH EXPRESSIONS: Math expressions are expressed differently in the
+     THEN part.  In the  IF part expressions are tested for validity, while
+     in the  THEN parts  the expressions  are assignments  of  value  to  a
+     variable. For  example: in  the IF part [X] = 5 means "If the value of
+     [X] is  5, the statement is true. In the THEN part values are assigned
+     to variables  and the  expression would  be phrased  "[X] IS GIVEN THE
+     VALUE 5"  which means  assign the  value 5 to the variable [X]. If you
+     wish to  assign a value to a variable in the THEN part, press [M] from
+     the new  condition menu.  You will first be asked for just the name of
+     the variable  you wish to assign the value to. Enter the variable name
+     [ ].  You will  then be asked to enter the value to be assigned to the
+     variable. Enter  an expression  that  evaluates  to  a  value,  NOT  a
+     conditional test.  Do NOT  use =,  <, >, etc. This is not a comparison
+     but an  assignment of  value. The  condition that  appears in the left
+     window will be
+
+          [variable name] IS GIVEN THE VALUE (expression)
+
+     This format is used to make it clear a value is being assigned.
+
+     If the  variable you  are assigning the value to is a new variable, or
+     if the  expression contains  a new  variable, the program will ask for
+     the information  on the  variable as  described previously.  You enter
+     only the variable name and then enter the expression. The program will
+     provide the IS GIVEN THE VALUE.
+
+     If the variable you chose in the THEN part was specified as not having
+     a value  associated with  it, the  text associated  with the  variable
+     would be displayed in the left window and you will not be asked for an
+     expression to assign to the variable.
+
+     When a  rule with  true  IF  conditions  is  found  with  mathematical
+     expressions in  the THEN  part, the  expressions will be evaluated and
+     assigned to  the appropriate variables. The expression can contain the
+     variable being  assigned the  value, which allows running totals to be
+     kept, for example
+
+          [X] IS GIVEN THE VALUE [X] + 1
+
+     which increments  [X]. If  the variables  are text only variables, the
+     program will  display the  appropriate text at the end of the run with
+     the sorted list of choices.
+
+     After the  program has checked all of the rules to determine the final
+     values of  the choices,  it does  a final  check through the rules for
+     ones with  variables that  you wish  displayed at  the end  and checks
+     those rules  to see  if they  are true.  In this way it is possible to
+     create expert  systems that  have no  "choices"  but  only  display  a
+     variety of variables. Both variables with values and variables without
+     values, that are displayed as text notes, can be used. The approach of
+     using variables  without associated  values in  place  of  choices  is
+     particularly useful  for  knowledge  bases  that  have  many  possible
+     messages to the user but with each only appearing in a few rules.
+
+     4. CHOICES:  You can  have choices,  the  possible  solutions  to  the
+     problem that  the expert  system will  decide among, in the THEN part.
+     These were not allowed in the IF part. To add a choice, press [C]. The
+     list of  choices will  appear in the right window. Enter the number of
+     the choice  you wish.  The computer  will then ask for the probability
+     value you  wish to  give the  choice. Depending  on the  calculational
+     system you  chose at the start of the program, this will be 0 or 1, 0-
+     10 or  0-100. See  the "Nomenclature"  section for more information on
+     the meaning  of the numeric values. The computer will display the text
+     of the choice, "-Probability=" and either 0 or 1 or a ratio with 10 or
+     100 in  the denominator  and the  numeric value  you selected  in  the
+     numerator.
+
+     Choice numbers  must be  entered one  at a  time unlike  selecting the
+     values in  a qualifier's list. If you wish to add another choice press
+     [C] again.
+
+     If none  of the  choices are  appropriate you  can add a choice to the
+     list by  pressing [N].  The computer will ask for the new choice text,
+     add it  to the  list and  ask you  what probability  value you wish to
+     assign it.
+
+     You can  correct a  typo in the text of a choice, or just rephrase the
+     text, by  pressing [T].  The computer  will ask  for the number of the
+     choice to  correct. It will then display the old text for you to edit.
+     If you  change the  text of  a choice  in one  rule, it  automatically
+     changes the choice in ALL the rules.
+
+
+
+NOTES AND REFERENCES
+
+When you  are through  entering the  THEN conditions and choices just press
+[ENTER]. The computer will ask you for the note text. If there is something
+you wish  to point out to the user when they encounter this rule, enter it.
+If not,  just press  [ENTER]. The  note is  optional and  not used  by  the
+computer in  its calculations.  You may  also press [R] [ENTER] to copy the
+note from  the previous  rule. The  note from  the previous  rule  will  be
+displayed and  the cursor  will be  positioned on  the first character. You
+will be  able to  change the note. Press [ENTER] when you have modified the
+note. To  copy the  note from  the previous  rule without  change press [R]
+[ENTER] [ENTER].
+
+The program  will then  ask for the reference text. This, like the note, is
+optional. You  may, however,  wish to  enter the  source of  the  knowledge
+represented in  the rule.  Should anyone  question the  rule, they would be
+able to  find  the  source  of  knowledge  represented  in  the  rule.  The
+reference, like  the note,  may also be used to provide more information to
+the user  of the knowledge base. If you do not wish to add a reference just
+press [ENTER].  As with  the note,  you may  press [R]  [ENTER] to copy the
+reference from  the previous rule for editing. This is especially useful if
+the reference  for a series of topics is the same document but on different
+pages. Just  call up  the previous  reference with  [R] [ENTER], change the
+page number and press [ENTER].
+
+
+
+CHECKING THE RULE
+
+The computer will then display the full rule that you have just entered and
+ask if  it is  correct. If you press [N] the computer will reject the rule.
+If the  rule is  basically correct  with minor  errors, accept the rule and
+then edit it.
+
+If you  press [Y] or [ENTER] to accept the rule the computer will check the
+new rule  against the  other rules  in the  knowledge base.  To do this the
+computer first assumes that the new rule's IF and THEN conditions are true.
+It then checks to see what other rules would also be true. All mathematical
+expressions are  ignored during  this check.  The computer will display any
+rules it finds and ask if you still wish to add the new rule.
+
+For example, you might enter the new rule:
+
+          IF
+               THE COLOR OF THE FLOWER IS RED
+
+          THEN
+               CHOICE 1: Probability = 3/10
+
+If in checking the existing rules, the program found a rule;
+
+          IF
+               THE COLOR OF THE FLOWER IS RED
+
+          THEN
+               CHOICE 4: Probability = 6/10
+
+The program  would display  the rule  since, clearly  if the  new rule were
+true, this rule would also be true. Likewise, if it found the rule:
+
+          IF
+               THE COLOR OF THE FLOWER IS NOT BLUE
+          THEN
+               CHOICE 6: Probability = 0/10
+
+it would  display the  rule, since the IF condition in the new rule implies
+that the IF condition in the found rule would be true.
+
+You may  press [N] to cancel the new rule; [ENTER] to keep the new rule and
+continue checking  for additional rules that would be true or [ESC] to keep
+the new  rule and cancel the comparison with other rules. You may redisplay
+the original  rule you  were checking  by pressing [S]. This enables you to
+compare the rule with the one the computer has found in its check.
+
+If you  decide that  there is  a conflict between the new rule and the rule
+the computer  has found,  you can  go directly to the edit mode by pressing
+[E]. You  will be  asked if  you wish to edit the new rule or the displayed
+rule. The default is to edit the new rule. If no rules are found that would
+automatically also  be true,  the computer  adds the  rule to the knowledge
+base and returns to the main menu.
+
+At the start of the run you were given the option of switching off the rule
+checking function.  This is  because the  rule checker  does not  check the
+validity  of   mathematical  expressions,   and,  if  you  are  using  many
+mathematical expressions,  you may  find it  distracting to  have the rules
+checked.
+
+For example, if you entered this rule:
+
+               IF
+                    THIS IS VALUE 1
+               and  [X] < 20
+
+               THEN
+                    CHOICE 1 : Probability = 3/10
+
+The rule checker might display the following rule, that had already been
+entered, as also possibly true.
+
+               IF
+                    THIS IS VALUE 1
+               and  [X] > 20
+
+               THEN
+                    CHOICE 2 : Probability 5/10
+
+The program  will not  recognize that  [X] <  20 and [X] >20 cannot both be
+true.  Mathematical   expressions  are  ignored  when  checking  rules  for
+consistency. This  approach was  taken because  it can be very difficult to
+determine if two or more equations can be simultaneously true.
+
+
+
+EDITING A RULE:
+
+To edit  an existing  rule press  [E] from the main menu. The computer will
+ask what  rule number  you wish  to edit. If you wish to edit the last rule
+entered, just  press [ENTER],  otherwise input  the number  of the  rule to
+edit. The computer will display the rule and ask if you wish to edit the IF
+part [I], THEN part [T], note [N] or reference [R]. If this is not the rule
+you wanted to edit, you can press the up arrow or down arrow keys to scroll
+through the rules to the one you want to edit.
+
+If you  enter [I]  or [T]  the IF or THEN conditions will be displayed. You
+will then  have the  option of  deleting [D],  adding [A],  changing [C] or
+reordering [R] the conditions.
+
+     1. DELETING  A CONDITION: If you press [D], the computer will ask what
+     condition you wish to delete. Enter the appropriate condition's number
+     and that  condition will be deleted. Just [ENTER] or [ESC] will cancel
+     without deleting any condition.
+
+     2. ADDING  A CONDITION: To add a condition press [A]. You will be able
+     to add a condition in the same way as when adding a condition to a new
+     rule. If you are in the THEN part, choices may also be added.
+
+     3. CHANGING  A CONDITION:  To change  one of the conditions press [C].
+     The computer  will ask  what number  condition you wish to change. The
+     computer will  display that  condition's qualifier with its value list
+     in the  right window.  Make your  new selection  of values and the old
+     condition will  be replaced by the new one. Just [ENTER] or [ESC] will
+     cancel without  changing the  condition. If  you select  to  change  a
+     choice, you  will automatically  be presented with the list of choices
+     to choose from. If you select to change a mathematical expression, you
+     will automatically  be in  the math  mode. "Change"  is equivalent  to
+     deleting the  old condition  and adding  a new  condition in  the same
+     place with the same qualifier, it just saves a few steps.
+
+     4. REORDERING  THE CONDITIONS:  To reorder  the conditions  press [R].
+     When the  knowledge base is run the conditions are tested in the order
+     that they  appear. Very  general conditions should be high in the list
+     to rapidly  eliminate rules  thereby preventing  the user  from  being
+     asked  unnecessary  questions.  The  computer  will  ask  what  number
+     condition you wish to move and what line number to move it to.
+
+After each  operation the  new list  of conditions will be displayed so you
+may continue modifying the list.
+
+If you  press [N]  or [R]  from the  edit menu,  the text  of the  note  or
+reference will be displayed for you to edit. Make the necessary changes and
+then press [ENTER].
+
+When you  are finished  editing, press  [ENTER], and you will return to the
+main edit menu.
+
+Press [ENTER] when you are through editing the rule.
+
+
+
+DELETING A RULE:
+
+To delete  a rule  press [D] from the main menu. The computer will ask what
+number rule you want to delete. Enter the number of the rule or [L] for the
+last rule  entered. Pressing  just [ENTER]  or [ESC] will return you to the
+main menu without any deletion. The computer will display the selected rule
+and ask  if this is the rule you wish to delete. If you press [Y], the rule
+will be deleted and all following rules will be renumbered to fill the gap.
+If you press any key but [Y], you will be returned to the main menu with no
+rules deleted. When a rule is displayed for possible deletion you can press
+the up  arrow or  down arrow keys to scroll through the rules. If you press
+[Y], the rule displayed will be deleted.
+
+
+
+MOVING RULES:
+
+When EXSYS  runs the  rules, they  are tested  in the order that they occur
+(for each  choice). If there are very general rules that eliminate the need
+to ask  other rules,  they should  be first  in the knowledge base. All new
+rules added  to the  knowledge base  are added  at the  end but they can be
+moved to  the front  with the [M] command. When you press [M] from the main
+menu, the  computer will  ask for the number of the first rule in the block
+of rules  to move. (Enter <L> if you want just the last rule.) It will then
+ask for  the number  of the  last rule in the block of rules to move (again
+<L> can  be used for the last rule). The program will then ask for the rule
+to move the block BEFORE. To move rules to the start, select to move before
+Rule 1.  To move  rules to the very end enter <L>. The rules specified will
+be moved and all rules will be renumbered accordingly.
+
+
+
+RUNNING THE RULES:
+
+EDITXS allows  you to  run the knowledge base as you develop it. To run the
+rules you  have entered,  press [R]  from the main menu. The knowledge base
+will run just as if it were run with EXSYS.EXE except for a few features:
+
+     A. If  you press  [ESC] in  response to a request for information, you
+     will return  to the rule editing mode. Upon returning to the rule edit
+     mode, you  will first  be asked  if you  wish to  change  any  of  the
+     starting, ending, etc., text and then go to the main menu.
+
+     B. The  text will  be displayed  noticeably more  slowly than with the
+     runtime program  since the  editor accesses  the text  from disk while
+     EXSYS.EXE will store the text in memory, if possible.
+
+     C. The option for the display of rules will be set for "display", even
+     if you have requested that the user not have the rules displayed. This
+     is because in debugging the knowledge base it is almost always best to
+     watch the  rules as  they are  used to  get a  better idea of what the
+     knowledge base  is doing.  You have  the option  of switching the rule
+     display off.
+
+     D. You  can not  save your  position during  a run  as  you  can  with
+     EXSYS.EXE.
+
+
+
+PRINTING THE RULES:
+
+When developing a knowledge base, it is often very useful to have hard copy
+of the  rules, qualifiers with values and choices. To print the rules press
+[P] from  the main menu. The computer will ask if you wish the list printed
+continuously or 1 rule per page. You will also have the option of printing:
+
+     A. Only the rules
+     B. Only the qualifiers, choices and variables
+     C. Both
+
+When the  qualifier, choices,  etc., are  printed, the  program  will  also
+generate a  cross reference listing that shows all of the rules the item is
+used in.  If the  rule number is listed in parentheses it means the item is
+used in the THEN part.
+
+     NOTE: The  program prints  from the LPT1 port. If you are using a
+     serial printer,  the output  will have to be redirected. See your
+     DOS manual for information on redirection.
+
+
+
+STORING AND EXITING:
+
+To store the rules, press [S] from the main menu. The rules will be stored
+on the disk. It is a good idea to occasionally store the rules in case of a
+power failure or other catastrophe. After storing the rules, you will be
+asked if you are done. If you press [N] the program will return you to the
+program where you left off. Pressing any other key will exit to DOS. DO NOT
+EXIT EDITXS WITHOUT USING THE [S] COMMANDS.
+
+
+
+                         TECHNIQUES FOR DEVELOPING
+                       EXPERT SYSTEM KNOWLEDGE BASES
+
+
+
+SELECTING A CALCULATIONAL SYSTEM
+
+The first  major decision  you will  have  to  make  when  starting  a  new
+knowledge base  is what  calculational system to use. (See the Nomenclature
+section for  a discussion  of the  available choices)  This  decision  will
+effect the way the knowledge base operates and CAN NOT be changed later.
+
+The 0  or 1 system should be used when selecting items from a list that are
+not mutually exclusive. For example: the choices could be all the available
+income tax  forms. The  expert system  could determine  what set of forms a
+user needed  to fill  out. The  output would be a list of applicable forms.
+There is  no ranking  of the  acceptable choices  in this  system, it  is a
+simple yes  or no  situation. DO  NOT use  this system  if you  want to use
+probability.
+
+The 0 - 10 system is the most generally useful, especially if probabilistic
+rules are  needed, (e.g.  if a  condition is  true  then  there  is  a  80%
+likelihood that  choice X  is appropriate). Values of 0 and 10 allow you to
+completely eliminate  a choice  or definitely  include  it.  The  remaining
+values, 1-9,  are averaged  over the rules used. This provides a ranking of
+the choices  from absolutely  certain to  definitely not.  This  system  is
+especially useful  when choosing  from among  a group of mutually exclusive
+options where  the solution  can only  be one  choice, but there may not be
+enough data  available to  positively identify it. The ranked results would
+indicate the most probable choice.)
+
+The 0  - 100  system should  be used  if averages,  including the 0 and 100
+values, are  desired (In the 0-10 system 0 and 10 fix the value and prevent
+averaging) or  if precise probability data is available. In general, if the
+rules are  based  on  an  experts  intuitive  feeling  and  experience  10%
+increments are  adequate and  the 0-10  system should  be used. However, if
+precise statistical data is available use the 0-100 system.
+
+The 0  - 100  system also  allows the  values for  a specific  choice to be
+combined as  dependent or  independent probabilities.  If  your  rules  are
+structured such  that, combining  the values  as dependent  or  independent
+probabilities is desired, use the 0 - 100 system.
+
+
+
+NUMBER OF RULES TO USE IN DERIVATION OF DATA
+
+The program  will ask  you how  many rules  to use  in  the  derivation  of
+information from  other rules.  You can  use all  of the  rules that have a
+specific qualifier  in their  THEN part  or stop  after the first such rule
+found with  a true IF part. The default case of using all rules will always
+work but  can lead to asking the user some unnecessary questions. If all of
+the derivations  in your  expert system  are simple decisions with only one
+value associated with a qualifier, but with several different ways by which
+the information  could be  derived, you  probably only  need one  rule  for
+derivations. If you need several rules to each contribute a different piece
+of information  about a  qualifier, you  will need  to  use  all  rules  in
+derivations. It  is usually  best to  develop the  knowledge base  with the
+default option of using all rules and then see if unnecessary questions are
+being asked when you run it.
+
+For example, we might have a rule:
+
+               IF
+                    A SHIPMENT IS SPECIFIED
+                         .
+                         .
+
+               THEN
+                         .
+                         .
+
+
+In testing  the rule,  the program  will try  to  determine  if  the  first
+condition is  true by  attempting to  derive information  from other rules.
+Suppose we  have two  rules that  can be  used to derive information on the
+shipment being specified.
+
+          Rule 2:
+               IF
+                    THE SHIPMENT NUMBER IS INCLUDED
+
+               THEN
+                    THE SHIPMENT IS SPECIFIED
+
+
+          Rule 3:
+               IF
+                    THE DESTINATION IS INCLUDED
+          and       THE DATE IS INCLUDED
+
+               THEN
+                    THE SHIPMENT IS SPECIFIED
+
+
+If we  decide to  use all  rules in  the derivation, both rule 2 and rule 3
+will be  tested to  derive information  on THE  SHIPMENT IS  SPECIFIED.  In
+practice we  could stop after the first valid rule, since if rule 2 is true
+we know  all we  need to  know and  don't need  to ask the user unnecessary
+questions about DESTINATION or DATE.
+
+On the other hand, if we had a rule
+
+          IF
+               THE SHIPMENT CARGO INCLUDES FRUIT
+                    .
+                    .
+
+          THEN
+                    .
+                    .
+
+and the following rules to determine information about the cargo:
+
+          Rule 2
+               IF
+                         .
+                         .
+
+               THEN
+                    THE SHIPMENT CARGO INCLUDES WOOD
+
+          Rule 3
+               IF
+                         .
+                         .
+
+               THEN
+                    THE SHIPMENT CARGO INCLUDES FRUIT
+
+          Rule 4
+               IF
+                         .
+                         .
+
+               THEN
+                    THE SHIPMENT CARGO INCLUDES METAL
+
+In this  case, since  the cargo could be any combination of wood, fruit and
+metal, we  must determine  if EACH  of rules 2,3 and 4 are true. We can not
+derive all  of the  information about the cargo from a single rule, we must
+use all of the rules that have the qualifier in them.
+
+
+
+BACKWARD CHAINING
+
+Most problems  can be  divided into  subproblems which can often be divided
+yet finer.  Outline the  smaller problems  and create  rules to  solve them
+using consistent  terminology and  rules. You  can then  write more general
+rules using  the solutions  to the  smaller problems  to  solve  the  large
+problem. EXSYS will try to solve the larger problems by using the solutions
+to the  smaller problems  to derive  the information it needs. This ability
+for the  program  to  automatically  invoke  the  rules  needed  to  derive
+information is "backward chaining".
+
+Backward chaining  is one  of the  most  powerful  aspects  of  EXSYS.  The
+following is  an example  of how  a problem can be broken down into smaller
+parts:
+
+Suppose we are developing an expert system to give medical advice when a
+doctor is out. Naturally, such an expert system would need to know that if
+someone is sick and calls after hours, they should take an aspirin and call
+in the morning. This can be expressed in rule form as:
+
+        Rule 1:
+          IF
+               THE CALLER IS SICK
+       and          THE HOUR IS LATE
+
+          THEN
+               ASPIRIN - Probability= 10/10
+       and          CALL AGAIN IN MORNING - Probability= 10/10
+
+This rule will select the aspirin and "call again" choices. The problem has
+now been reduced to two smaller problems: determining if the caller is sick
+and determining  if the  hour is  late. The program could just ask the user
+for this  information but  the  decision  on  "sick"  or  "late"  would  be
+subjective. It  is better  to let  the computer derive the information from
+other rules and to ask the user for more unambiguous input.
+
+When the  program tests  Rule  1  it  will  start  by  checking  the  first
+condition, THE  CALLER IS  SICK. The  qualifier for  this condition  is THE
+CALLER IS.  Before it  asks the  user, the  program searches  all its other
+rules to  see if  there are  any that have the same qualifier in their THEN
+part. In  this case, assume we have put in three rules to help the computer
+determine if the caller is sick. These all have the qualifier THE CALLER IS
+in their THEN part.
+
+     Rule 2:
+          IF
+               THE FACE IS GREEN
+
+          THEN
+               THE CALLER IS SICK
+
+     Rule 3:
+          IF
+               THE TEMPERATURE IS OVER 100 DEGREES
+
+          THEN
+               THE CALLER IS SICK
+
+     Rule 4:
+          IF
+               THE FACE IS NOT GREEN
+      and      THE TEMPERATURE IS LESS THAN 100
+               DEGREES
+
+          THEN
+               THE CALLER IS WELL
+
+In this  case the  program will start by trying to derive information about
+THE CALLER  IS from  Rule 2. Since there are no rules that have THE FACE IS
+in their  THEN parts the program will ask the user about face color. If the
+user selects  "GREEN" then all the IF conditions in Rule 2 will be true and
+the computer will know THE CALLER IS SICK.
+
+If we  selected to  use only  the first successful rule in derivations, the
+program would  now return  to work  on Rule  1  with    the  new  piece  of
+information that  the caller is sick. If we  selected to use all applicable
+rules in  derivations the  computer   will instead now try to apply Rule 3.
+(In this  case the  additional question  would be unnecessary and using the
+first successful rule for derivations would be adequate.)
+
+If we  answered that  the face  was other  than green  the computer   would
+reject Rule  2 as invalid and try Rule 3 since it is the next rule with the
+qualifier THE  CALLER IS  in its  THEN part. The program would then ask the
+user about  the caller's  temperature. Answering  that the  temperature was
+over 100 degrees would indicate the caller was sick by Rule 3 while by Rule
+4, a  temperature of  less than  100 degrees  would indicate the caller was
+well; if the face color was not green.
+
+By using rules 2, 3 and 4 the program can derive whether the caller is sick
+or well, without directly asking the user about "sick" or "well".
+
+     Had we  not had  Rule 4,  and answered that the face was not green and
+     the temperature  less than 100 degrees, the program would not have had
+     any valid  rules with  THE CALLER  IS in  their THEN part. The program
+     would not  have been  able to  derive any information on THE CALLER IS
+     and would  have asked the user if the caller was sick or well. This is
+     what we  were trying  to avoid so Rule 4 was added. Any combination of
+     answers to the questions about face color and temperature will have at
+     least one of the rules true.
+
+The computer  now knows the state of the caller's health. If the  caller is
+well, Rule 1 is rejected. If the caller is sick the first condition of Rule
+1 is  true and  the computer  will test  the second  condition, THE HOUR IS
+LATE. Again  we  have  added  rules  to  help  in  the  derivation  of  the
+information:
+
+     Rule 5:
+          IF
+               THE DAY IS MON or TUES or WED or THURS
+     and       THE TIME IS BETWEEN 4:00PM AND 9:00AM
+
+          THEN
+               THE HOUR IS LATE
+
+
+
+     Rule 6:
+          IF
+               THE DAY IS FRI
+     and       THE TIME IS BETWEEN 2:00PM AND 4:00PM
+               or BETWEEN 4:00PM AND 9:00AM
+
+          THEN
+               THE HOUR IS LATE
+
+     NOTE: THE DOCTOR LEAVES EARLY FRIDAY
+
+
+     Rule 7:
+          IF
+               THE DAY IS SAT or SUN
+
+          THEN
+               THE HOUR IS LATE
+
+
+
+     Rule 8:
+          IF
+               THE DAY IS NOT SAT or SUN
+     and       THE TIME IS BETWEEN 9:00AM AND 2:00PM
+
+          THEN
+               THE HOUR IS EARLY
+
+
+
+     Rule 9:
+          IF
+               THE DAY IS MON or TUES or WED or THURS
+     and       THE TIME IS BETWEEN 2:00PM AND 4:00PM
+
+          THEN
+               THE HOUR IS EARLY
+
+The program  now only needs to ask the user easily answered questions about
+the day  of the  week and  the time  segment (9:00AM-2:00PM, 2:00PM-4:00PM,
+4:00PM-9:00AM) to  know if the hour is late. (The first condition in Rule 8
+could have  been written  THE DAY IS MON or TUES or WED or THURS or FRI and
+produced exactly the same results. The form used is shorter and simpler.)
+
+We broke  the problem  into three parts - a general rule (Rule 1)  based on
+two smaller problems and two sets of rules to solve the  smaller problems.
+
+The only  time you  should have  rules that DO NOT contain choices in their
+THEN part is if they are being used to derive information for other rules.
+
+It is possible to have the derivations continue down many layers in complex
+expert systems.  It is  also now  possible to  write other  rules using THE
+CALLER IS  or THE  HOUR IS  qualifiers and  rules 2-9 will automatically be
+involved to  derive the  needed information.  Should we  later decide  that
+there needs  to be  another way  to determine if the caller is sick, we can
+simply add a single rule such as:
+
+     Rule 10:
+          IF
+               THE VOICE SOUNDS HOARSE
+
+          THEN
+               THE CALLER IS SICK
+
+The new  Rule 10  will automatically  be involved by any rule that uses THE
+CALLER IS in its IF part. (In practice it would also be necessary to modify
+Rule 4 so we don't get a patient that is both well and sick). Once a set of
+rules to  solve the  small parts  of a problem are written the more general
+overall rules are often fairly easy to write.
+
+One approach to finding smaller problems is to ask yourself (or the expert)
+how, in  the broadest  terms, does one solve the problem. You will probably
+get an  answer like  "If ---  and  ---  then  ----".  Consider  if  the  IF
+conditions could  be made  into questions  that you could simply ask a user
+and reliably get a meaningful answer. If the IF condition is too complex to
+simply ask,  consider how  it could  be broken down into questions that the
+intended user  would understand  and which  could be  used to derive the IF
+condition. You  may have to go through the process again if these questions
+are still  impractical to  ask a user. Continue this process until you have
+questions that  the intended user can answer and then convert your sequence
+into rules.
+
+The rules will simply be the statements that express how the information is
+derived. Remember that if you are creating rules to derive information they
+must be  a complete  set that takes all possible combinations of input into
+account or  the computer  may end  up asking  the complex question you were
+trying to prevent.
+
+Rules can  call each  other to  derive information recursively. For example
+rule 1  could use  rule 2 to derive information and rule 2 could use rule 1
+to derive information causing rule 1 to again call rule 2, etc. The program
+will realize  that it  is in  a circular  loop and break out of the loop to
+continue the  problem. A  rule can also have the same qualifier in both its
+IF and THEN parts. This is useful if, based on other input, you suspect the
+user may  not have  fully considered all of the values for the qualifier or
+if you  wish to force a value for the qualifier regardless of what the user
+input.
+
+
+
+CREATING CONDITIONS
+
+When you  first input  a new  qualifier you will be asked for the qualifier
+and a  list of acceptable values for the qualifier. When creating this list
+it is much easier on the user if the values are consistent. For example: if
+a qualifier  deals with a bird's legs, do not mix color descriptors (black,
+yellow, green)  with shape descriptors (long, short, etc.). If you find you
+need to  describe different  features of  the same item, the same qualifier
+text can  be used more than once. The computer keeps track of the qualifier
+by number,  not text,  and will  not be  confused. (This is NOT the same as
+using both  the same  qualifier and values text twice which may confuse the
+program and user.) It would be acceptable to have two qualifiers:
+
+     THE LEGS ARE             THE LEGS ARE
+          YELLOW                   SHORT
+          GREEN                    LONG
+          .                        .
+          .                        .
+
+Using exactly  the same qualifier wording may cause some difficulty on text
+searches since  only the  qualifiers are  searched. A better approach would
+be: THE LEG COLOR IS ......... and THE LEG LENGTH IS .........
+
+When creating  rules remember that ALL IF conditions in a rule must be true
+for the  THEN conditions  to  be  considered  true.  However,  in  a  given
+condition that  has multiple  acceptable values only one value need be true
+for the condition to be true.
+
+Occasionally you  may want  to express  a condition such as A can be X or Y
+but not  Z. This  can be  done by  repeating a  qualifier in  the IF  part.
+Suppose possible values for a bird's leg color are black, yellow, green and
+red. You  want a  condition that  says leg color can be yellow or green but
+not black. This is accomplished by using two conditions:
+
+          IF
+               THE BIRD'S LEG COLOR IS YELLOW or
+               GREEN
+          and  THE BIRD'S LEG COLOR IS NOT BLACK
+                    .
+                    .
+
+Both statements  must be  true for  the rule to be true. If the user inputs
+both yellow  and black  in answer  to the computer's asking about leg color
+the first condition would be true but the second would be false.
+
+The computer  checks the  conditions in  a rule  in the  order they appear.
+Consequently put  the  most  general  conditions  first.  If  the  computer
+determines that  a frequently  used condition  is false, it will be able to
+eliminate a  large number  of rules  without asking  the  user  unnecessary
+questions.  If  you  should  find  the  expert  system  asking  unnecessary
+questions, it  may need more general conditions at the start of some rules.
+The ability  to copy  conditions from  previous rules  makes adding general
+conditions to  rules easy.   Likewise,  the most general rules should be at
+the start of the knowledge base. (Remember, rules can be moved with the [M]
+command).
+
+
+
+COMBINING PROBABILITY
+
+Another powerful  feature of  EXSYS is  the ability to consider the various
+aspects of  an identification separately and have each aspect contribute to
+the final  probability of  a choice. This allows the individual rules to be
+kept simple,  with the program combining the probabilities from the various
+rules.
+
+In some  cases it  is easy to write rules that eliminate certain choices by
+giving them  a value  of 0,  (see the  demo BIRDDEMO). In other cases it is
+easier to  write rules that include items by giving them a value of 10 (see
+PCDEMO). Usually a combination of these approaches is the most practical.
+
+We might have four rules that relate to choice 1:
+
+     Rule 1:
+          IF
+               .
+               .
+
+          THEN
+               CHOICE 1: Probability = 0/10
+
+     Rule 2:
+          IF
+               .
+               .
+
+          THEN
+               CHOICE 1: Probability = 2/10
+
+     Rule 3:
+          IF
+               .
+               .
+
+          THEN
+               CHOICE 1: Probability = 8/10
+
+     Rule 4:
+          IF
+               .
+               .
+
+          THEN
+               CHOICE 1: Probability = 10/10
+
+If Rules  2 and  3 are  both true, the final value for Choice 1 will be the
+average of  2 and 8, or 5. If Rule 1 is also true, the 0 value will prevail
+and lock the value at 0. If Rule 4 were true, the 10 would prevail and lock
+the value  at 10.  In  many  identification  problems,  such  as  the  bird
+identification problem in BIRDDEMO, it is best to treat each characteristic
+separately. We  can easily  describe what  a  value  for  a  characteristic
+implies about  the overall  identification. The program will combine all of
+the values for a choice together to form the final value.
+
+
+
+USING MATHEMATICAL EXPRESSIONS AND VARIABLES
+
+While many expert systems can be developed without using numeric variables,
+the ability to calculate numeric values is a powerful tool and even if
+mathematical calculations are not needed in the expert system, numeric
+variables can be used to flag text for display at the end of a run.
+
+We will use several examples to illustrate this use of numeric variables.
+
+Whenever a  program finds  a new  variable in an expression it asks you for
+several pieces of information:
+
+     1. What text is to be associated with the variables?
+
+     2. Do  you want  the variable  displayed at  the end of a run with the
+     sorted list of choices?
+
+     3. Do you want the variable to have a value associated with it?  (This
+     is only asked for variables in the THEN part.)
+
+     4. Do you want the variable initialized?
+
+     5. If  the variable  is to  be initialized,  what value  is it  to  be
+     initialized to?
+
+Through this  combination of  options numeric variables can be used in many
+different ways.
+
+The most  straightforward way is to use numeric variables,  with associated
+values, that  are not  displayed at  the end of a run. This is the standard
+variable that  the user  is asked  the value  of and the value is used in a
+test.
+
+For example, we might want a rule to apply only if the weight of the object
+was less  than 20  pounds.  We could just create a standard qualifier/value
+set with  the qualifier  THE WEIGHT IS, with values LESS THAN 20 POUNDS and
+GREATER THAN  20 POUNDS.  However, we  may need  the  weight  to  do  other
+calculations so we use a numeric variable.
+
+In the IF part of the rule, we press [M] for math. The program will ask for
+the text of the expression and we enter
+
+                                     [WEIGHT] < 20
+
+The program  will recognize  that [WEIGHT] is a new variable and ask us for
+the associated text. This is where we can precisely tell the user what data
+we want.   In  this case,  we enter  THE WEIGHT  OF THE  OBJECT MEASURED IN
+POUNDS.
+
+The computer  will then  ask if  we wish to have this variable displayed at
+the end of a run. Since it is a variable the user is inputting, there is no
+reason to have it displayed at the end so we select the default value, [N].
+
+Since the  formula is  in the  IF part, the program knows the variable MUST
+have an   associated  value. It will then ask if we wish the variable to be
+initialized. Since  we want  the user  to be  asked for the value we select
+[N].  NEVER INITIALIZE A VARIABLE THAT YOU WANT TO BE ASKED OF THE USER.
+
+When the knowledge base is run, the program will ask the user for the value
+of the  variable. If the value is less than 20, the condition will be true.
+If the value is 20 or more pounds, the condition will be false and the rule
+will be rejected.
+
+We could then use [WEIGHT] later in the program for a calculation of a cost
+which is  based on  the weight  of the object. Lets say the cost is $15 per
+pound.
+
+We would  go to  the THEN part of the appropriate rule and press [M]. Since
+this is the THEN part of the program, will ask for the name of the variable
+we want to assign a value to we enter:
+
+                                         [COST]
+
+The program  will recognize  this as a new variable and ask for the text we
+want to associate with it. We enter "THE TOTAL COST".
+
+The program  will then ask if we want to have the variable displayed at the
+end of  a run.  Since we  are calculating  this value  to tell the user the
+total cost, we select [Y] to display the value.
+
+Since we are in the THEN part, the program will ask if we want the variable
+to have  a value  associated with  it. As this variable is going to be used
+for calculations  it must  have a  value so we select [Y]. The program will
+then ask  if we  want to have the variable initialized.  We do not want the
+user to be asked for the value of [COST] so we could initialize it. Also we
+may have [COST] in several rules each of which add an increment to the cost
+so we  choose to  initialize the variable by pressing [Y]. The program will
+ask what  value we  want to initialize to. We input 0.0 as the initializing
+value.
+
+The program then asks for the expression we want to assign to the variable.
+This should  be an  evaluable expression, NOT a test using <, >, =, etc. DO
+NOT enter  the expression  as  [variable]  =  expression.  Only  enter  the
+expression. In this case we input
+
+                              [COST] + ([WEIGHT] * 15)
+
+The left window will display
+
+              [COST] IS GIVEN THE VALUE [COST] + ([WEIGHT] * 15)
+
+indicating that this is an assignment of value.
+
+When the  program is  run the  value of  [COST] will be set to 0.0. Various
+rules may  lead to  increasing this  value. When the condition we have just
+entered is  used, the  user will be asked for the value of [WEIGHT] (unless
+[WEIGHT] was  already asked in conjunction with another rule) and the value
+of [COST] will be increased by 15 times the value of weight.
+
+When the run is finished, the program will display
+
+                                  THE TOTAL COST =
+
+with the calculated value of [COST].
+
+Another way  to use variables is to cause the display of a text note at the
+end of the run.
+
+Suppose there  are several  rules that  indicate a  sample  should  not  be
+exposed to  water and  we want  to make  sure the user is aware of this. We
+could put  a note on the topic but if the display of rules is switched off,
+the user will not see it. Instead, we use a variable.
+
+In the THEN part of the appropriate rule we press [M].
+
+The program  will ask  for the  variable name and we enter [WATER CAUTION].
+Since this  is a  new variable,  the program  will  ask  for  the  text  to
+associate with  it. In  this case  we want a cautionary note rather than an
+explanation of what input we need from the user. We enter
+
+                    DO NOT EXPOSE THE SAMPLE TO WATER.
+
+The program then asks if we want the variable displayed at the end of a run
+and we select [Y].
+
+The program  then asks  if we  want a  value associated  with the variable.
+Since we  want this  to be just a text note displayed to the user we select
+[N]. The  text we  associated with  the variable  will be  displayed as the
+condition in  the left  window.  When the rule is used, this condition will
+flag the  text associated with the variable for display at the end with the
+choices.
+
+If we  have another  rule that  also needs the same caution, just go to the
+THEN part,  press [M]  and enter  [WATER CAUTION] as the variable name. The
+text DO NOT EXPOSE THE SAMPLE TO WATER will appear as the condition.
+
+
+
+CREATING YOUR FIRST KNOWLEDGE BASE
+
+Often the  best way to develop a new knowledge base is to put in some rules
+to solve  the problem  and then  try to  solve specific  examples. (Have an
+expert on  the subject  area with you to determine if the computer gets the
+right answer)  If the  computer does  not get the correct answer, trace its
+rationale to  see where  the error occurred. Often the error will be due to
+an unrealistic  simplification of the main problem. Once the specific error
+is identified, add rules to more realistically address the area. EXSYS will
+work  these  into  the  overall  solution.  This  interactive  testing  and
+modification will  help to  extract the  intuitive knowledge and experience
+from the  expert into  rule form.  Continue testing the knowledge base with
+examples until you are confident it is working properly.
+
+As a  first attempt  at generating  a knowledge base select an area you are
+familiar with and try a small problem. (Having to extract knowledge from an
+expert while  trying to learn how to use the program can be frustrating for
+all concerned).
+
+One good sample problem is to create a knowledge base to identify the items
+on your  desk or  in your  office based  on information  on  shape,  color,
+texture, etc.
+
+Study the  sample knowledge  bases provided  and develop several small ones
+before attempting  a major  problem. With  a little  practice you  will  be
+surprised how  even seemingly  complex problems  can be  broken  down  into
+simpler problems that can be solved in relatively few rules.
+
+
+
+               MEMORY REALLOCATION AND OUT OF MEMORY ERRORS
+
+EXSYS  sets  aside  memory  space  for  rules,  qualifiers,  choices,  etc.
+Periodically this  space gets  full  and  the  program  will  do  a  memory
+reallocation. You  will get  a message to this effect on the screen and the
+computer will  store the  data to disk so that it can reallocate its memory
+to better handle the data.
+
+It is  possible that  the knowledge  base will have grown to the point that
+there is  no way  to fit  the data  in the available memory. If that is the
+case the  computer will  display OUT  OF MEMORY  and exit to DOS. Your data
+will have been saved before the program does this.
+
+
+
+
+
+                         OUT OF DISK SPACE ERRORS
+
+You will  get an OUT OF DISK SPACE error if your disk is full. The computer
+will prompt you to replace the full disk with a new formatted disk. It will
+then copy  the .RUL  part of  the knowledge base to the new disk and return
+to DOS.  It will  then be  necessary for you to copy the .TXT file from the
+old disk to the new disk before continuing.
+
+
+
+                         SIZE LIMITATIONS IN EXSYS
+
+
+
+There are three size limitations of importance in EXSYS.
+
+1. NUMBER OF VALUES IN A QUALIFIER
+
+     A qualifier  can have  up to  30 possible values. The program will not
+     let you  add values  past this  limit. If  you find that you need more
+     than 30  values try  to divide them into groups each with less than 30
+     values. Then  create a qualifier that selects among the groups and use
+     it in  conjunction with  new qualifiers  for each  of  the  individual
+     groups.
+
+2. NUMBER OF CONDITIONS IN A RULE
+
+     A rule  can have  up to  126 conditions  in its  IF part and up to 126
+     conditions plus  choices in its THEN part. This limit is not likely to
+     be a  problem. If  you find  yourself needing 126 conditions in the IF
+     part of  a rule you should restructure your approach to the problem to
+     break it  down into  smaller parts.  If you find yourself needing over
+     126 conditions  plus choices  in the  THEN part,  enter the  first 126
+     items, then  simply create  a new  rule repeating  all of the previous
+     rule's IF conditions and continue entering the THEN part. An unlimited
+     number of THEN items can be added in this way.
+
+3. NUMBER OF RULES IN AN EXPERT SYSTEM
+
+     The maximum  number of  rules that  you can  put in  an expert  system
+     knowledge base is determined by several factors:
+
+          The memory available in your computer
+          The size of the rules you are using
+          The number of qualifiers, choices and formulas
+          The version of DOS being used
+
+     If you  use rules  with an  average of  about 8  total conditions  and
+     choices, you  should be  able to  create about  700 rules  per 64k  of
+     memory over  192k. That  is a little under 5000 rules in a PC with 640
+     K.
+
+
+                                  SHRINK
+
+
+
+When you  are developing  an expert  system knowledge base it is frequently
+necessary to  edit rules,  correct typos,  etc. This  leads to  some wasted
+space in the .TXT file. The utility program SHRINK compresses the .TXT file
+by eliminating  no longer  needed text  and by rearranging the file so that
+the order allows the most rapid access to the text.
+
+It is not necessary to run SHRINK very often, but once a knowledge base has
+been fully  developed it is a good idea to use SHRINK to put it in its best
+possible form.
+
+To use SHRINK from DOS enter:
+
+                             SHRINK <filename>
+
+or just:
+
+                                  SHRINK
+
+and you will be prompted for the filename.
+
+SHRINK needs  extra space on the disk while it is rearranging the data. The
+disk must  have enough  space on  it for an extra copy of the .TXT and .RUL
+files you are shrinking.
+
+
+                                   USING
+                         EXSYS, EDITXS AND SHRINK
+                              WITH RAM DISKS
+
+
+
+RAM disk  programs simulate  a disk  in the RAM memory of the computer. For
+the runtime program, EXSYS.EXE, and the rule compressor, SHRINK.EXE, DO NOT
+use a  RAM disk.  EXSYS and SHRINK load the text file (.TXT) into memory if
+there is  room. The  program can  access the text this way much faster than
+with a  RAM disk.  If there  is not  enough memory  to store  the text, the
+program will access the text from the disk.
+
+Creating a  RAM disk reduces the memory available to store the text and can
+actually result  in making  the program run slower. (If there is not enough
+room for the program to store the text in memory, there isn't enough memory
+to create a RAM disk.)
+
+The performance  of the  rule editor  program  EDITXS.EXE  can  be  greatly
+improved through  the use of a RAM disk program. EDITXS buffers the text of
+the rules  on disk  and must go to the disk whenever the program needs some
+of the  text to  display. This only takes a fraction of a second but with a
+RAM disk the access to the text is much faster.
+
+The operation of RAM disk programs varies but all allow a section of memory
+to be  designated as a drive, often drive C. Read the instructions for your
+RAM disk  program and  create a  RAM disk space while still allowing enough
+memory (at least 256k) for the EDITXS program.  Copy BOTH the .TXT and .RUL
+knowledge base  files that  you wish to run into the RAM disk. Then run the
+program as  you would  normally, specifying  the file  in the RAM disk when
+asked for the filename.
+
+If you  use a RAM disk, be SURE to copy the new version of the file back to
+a floppy disk before you turn the computer off or go to another program.
+
+Be particularly  careful about running out of "disk" space when using a RAM
+disk. If you run out of space with a floppy disk, the program allows you to
+change to  a new  disk to  prevent losing data. This is NOT possible with a
+RAM disk.
+
+
+
+
+
+

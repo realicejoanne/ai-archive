@@ -1,0 +1,188 @@
+yidentification of some common fruits
+Dustin Huntington
+21this knowledge base will aid you in identifying four common fruits - apple, pear, orange and lemon.  you will be asked multiple choice questions and for certain measurements of the fruit in question.
+when you press the key the identification of the fruits most likely will be displayed in order of likelihood.  a value of 10 following a fruit name indicates a definite identification.  values of less than 7 are suspect and could be fruits not covered in this knowledge base.
+napple
+pear
+lemon
+orange
+
+y
+
+nthe color of the fruit is
+red
+orange
+green
+yellow
+
+1
+
+c1
+9
+c2
+7
+c3
+0
+c4
+0
+
+there are no red lemons or oranges
+The Encyclopedia of fruit - page 23
+
+
+l2
+
+c1
+0
+c2
+0
+c3
+0
+c4
+10
+
+
+r
+
+
+
+m[skin thickness] > 1
+the skin thickness measured in mm
+nn
+nthe fruit in question is
+a citrus fruit
+not a citrus fruit
+
+1
+
+THICK RINDS ARE CHARACTERISTIC OF CITRUS FRUITS
+
+
+
+m[skin thickness] <= 1
+
+fquestion
+2
+
+
+
+
+
+2
+1
+
+c1
+0
+c2
+0
+
+
+the encyclopedia of fruit - page 790
+
+
+2
+2
+
+c3
+0
+c4
+0
+
+
+r
+234
+
+
+rnindividual seeds (greater than 2 mm) are
+present
+not present
+
+1
+
+c1
+9
+c2
+0
+
+
+the encyclopedia of fruit - page 765
+
+
+
+rl2
+
+c1
+0
+c2
+9
+
+
+r
+
+
+
+
+2
+1
+m[length] < 6
+The length of the fruit measured in cm
+
+
+
+c3
+8
+c4
+2
+
+
+the manual of the sizes of fruits - page 125
+
+
+
+rm[length] >= 6
+
+c3
+2
+c4
+8
+
+
+r
+37
+
+
+
+
+m[lenght] > 18
+
+m[LENGTH] > 18
+
+m[large length]
+the large value for [length] suggests that there may have been a measurement error or that the fruit is not one of the ones this knowledge base is designed for.
+ynm[x]
+half of the length
+yyn[length]/2
+
+
+
+
+e
+td2
+
+ir2
+1
+c2
+2
+c2
+1
+r2
+1
+
+
+d3
+nml
+l
+1
+s
+
+

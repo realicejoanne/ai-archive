@@ -1,0 +1,81 @@
+EXSYS is a program for running expert system knowledge bases.  Expert
+systems are programs that allow the computer to emulate a human expert in
+a subject area.  The computer will ask you questions and arrive at a
+conclusion.  The program can explain why it needs the information it is
+requesting and can explain its conclusions.
+
+The program will ask you a series of questions by displaying a statement
+with a numbered list of alternatives that could finish the statement.
+Enter the number or numbers of the items in the list correct for your
+situation. If more than one number is desired separate the numbers with a
+comma or space. If you wish to know why the question is being asked,
+enter "WHY" and the computer will display the rule it is using.
+
+The computer may also need numeric data.  The program will tell you what
+information it needs and ask you to input the value.  Again, if you input
+"WHY" the computer will show you the rule it is testing.
+
+Rules are expressed in the IF-THEN format.  If ALL of the statements in
+the IF part are true the rule is considered true.  If any of the
+statements in the IF part are false, the rule will be rejected.  The
+statements in the IF part are English sentences or algebraic expressions
+and should be easily readable.  The THEN part may also contain text
+statements or mathematical expressions.  When the IF part of a rule is
+true, the THEN part is considered true and the statements in the THEN
+part are added to what the computer knows to be true.  The THEN part may
+also contain the possible solutions that EXSYS will select from.  These
+solutions are indicated by a statement followed by " - Probability = "
+and are followed by a value that indicates the likelihood of the
+solution. The closer the value is to 1 the more likely the solution is.
+
+The computer will attempt to derive information from other rules rather
+than ask the user.  This is called backward chaining.  If you ask "WHY"
+the computer needs information, more than one rule may be displayed.
+This is because the first rule is being used to derive information needed
+by the second etc., down to the final rule which is the actual rule being
+tested.
+
+When a rule is displayed, you may ask the computer how it knows the
+rule's IF conditions are true by entering the line number of the IF
+statement.  The computer will either tell you that you told the program
+the statement was true or display the rule that was used to derive the
+information.  If a rule is in the process of being tested, the program
+may respond that it does not know if the statement you have questioned is
+true.  If you ask about a mathematical expression, the program will show
+the value of each of the variables.  You may then ask how the program
+arrived at each of these values. The reference for a rule can be
+requested by pressing the <R> key.
+
+When the computer has arrived at its answer it will display an ordered
+list of the possible solutions with their final scores.  The program may
+also display additional notes or calculated values that were determined
+by the program.  You may ask how it arrived at any of these results by
+entering the line number in question and the appropriate rules that were
+used will be displayed. You may print the list if you wish.
+
+A very useful feature once you have arrived at the list of solutions, is
+to change one or more of the answers you input to see how it changes the
+results.  To do this press the <C> key and you will have a list of all
+the input you provided displayed.  Enter the number of the item you wish
+to change.  When all of the changes are made, press <R> to re-run the data.
+The program may ask you additional questions if your changes necessitate
+additional information in reaching conclusions.  The program will display
+the new sorted list of choices with both the previous and new values
+for comparison. (You have the option to switch off the display of the
+previous values.)
+
+When you are finished, press <D> and you will have the option of running the
+program again.
+
+You also have the option of saving the data you have entered into the
+computer and being able to return to the place you left off later.
+If you wish to quit the program, enter QUIT in response to any of the
+requests for information.  The program will then ask for the name of
+the file you want to store the data in.  DO NOT USE THE NAME OF THE
+KNOWLEDGE BASE or you could accidentally erase part of the knowledge
+base.  When you run this program, one of the first things you will be
+asked is if you want to restore data from a file. If you press [Y], the
+program will ask you for the name of the file to read the data from, and
+will return you to the question where you left off or at the sorted list
+of choices, if that is where the data was saved from.
+

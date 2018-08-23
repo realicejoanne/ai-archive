@@ -1,0 +1,12 @@
+Domains
+ list = symbol*
+ 
+Predicates
+ inverse(list,list)
+ gabung(list,list,list)
+ 
+Clauses
+ gabung([],L2,L2).
+ gabung([X|L1],List2,[X|L3]):-gabung(L1,List2,L3).
+ inverse([],[]).
+ inverse([X|Xs],Ls):-inverse(Xs,Zs),gabung(Zs,[X],Ls).

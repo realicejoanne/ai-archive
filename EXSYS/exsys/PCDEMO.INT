@@ -1,0 +1,19 @@
+               DEMO 1 - SELECTING FROM AMONG A PRODUCT LINE
+
+This first demo shows how an expert system can aid a customer in selecting
+the proper items from a product line.
+
+The demo helps a person interested in purchasing a computer system who
+knows what they desire the system to do but do not know what hardware
+and software to buy.  The expert system asks questions about the
+intended application and recommends two groups of equipment.  The first
+group (indicated by probabilities of 10/10) are items essential to
+accomplishing the user's applications.  The second group (indicated by
+lower probability values) is equipment that would be useful but is not
+essential.
+
+The computer will ask you questions and display the rules as it uses them.
+Continue answering the questions until the computer displays the final
+sorted list of equipment.
+
+
